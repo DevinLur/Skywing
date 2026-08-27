@@ -1,0 +1,506 @@
+/* ========================================
+   1. VARIABLES CSS (colores y fuentes)
+   ======================================== */
+:root {
+    --primary-blue: #1a4d8f;
+    --primary-gradient: linear-gradient(135deg, #0b2b5c, #1e6df2);
+    --accent-orange: #f5a623;
+    --text-dark: #1a1a2e;
+    --text-gray: #5a5a7a;
+    --bg-light: #f4f7fc;
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+}
+
+/* ========================================
+   2. RESET Y ESTILOS BASE
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ========================================
+   3. BARRA DE NAVEGACIÓN
+   ======================================== */
+.navbar {
+    background: var(--white);
+    padding: 0 5%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+}
+.logo span {
+    color: var(--accent-orange);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    font-weight: 500;
+}
+
+.nav-links li a {
+    padding: 8px 12px;
+    border-radius: 30px;
+    transition: var(--transition);
+    color: var(--text-gray);
+}
+
+.nav-links li a:hover {
+    background-color: var(--bg-light);
+    color: var(--primary-blue);
+}
+
+.nav-links .active {
+    color: var(--primary-blue);
+    background-color: #e9eff7;
+}
+
+/* ========================================
+   4. SECCIÓN HÉROE (BUSCADOR)
+   ======================================== */
+.hero {
+    background: var(--primary-gradient);
+    padding: 60px 5% 80px;
+    text-align: center;
+    color: var(--white);
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+/* Pestañas del buscador */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    padding: 6px;
+    max-width: 400px;
+    margin: 0 auto 30px;
+    backdrop-filter: blur(4px);
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 10px 28px;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.tab-btn.active {
+    background: var(--white);
+    color: var(--primary-blue);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tab-btn:hover:not(.active) {
+    color: white;
+}
+
+/* Caja del formulario de búsqueda */
+.search-box {
+    background: var(--white);
+    border-radius: 60px;
+    padding: 10px 10px 10px 25px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.search-box .field {
+    flex: 1 1 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 120px;
+}
+
+.search-box .field label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-gray);
+    letter-spacing: 0.5px;
+}
+
+.search-box .field input {
+    border: none;
+    padding: 8px 0;
+    width: 100%;
+    font-size: 1rem;
+    color: var(--text-dark);
+    background: transparent;
+    outline: none;
+    font-weight: 500;
+}
+
+.search-box .field input::placeholder {
+    color: #b0b0c0;
+    font-weight: 400;
+}
+
+.search-btn {
+    background: var(--accent-orange);
+    border: none;
+    color: var(--white);
+    padding: 14px 40px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 8px 20px rgba(245, 166, 35, 0.3);
+    flex: 0 0 auto;
+}
+
+.search-btn:hover {
+    transform: scale(1.03);
+    background: #e09515;
+    box-shadow: 0 12px 25px rgba(245, 166, 35, 0.5);
+}
+
+/* Separador visual entre campos */
+.field-divider {
+    width: 1px;
+    height: 40px;
+    background: #ddd;
+    flex-shrink: 0;
+}
+
+/* ========================================
+   5. SECCIÓN DE DESTINOS POPULARES
+   ======================================== */
+.destinations {
+    padding: 20px 5% 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.destinations-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.destinations-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.destinations-header h2 span {
+    color: var(--primary-blue);
+}
+
+.destinations-header a {
+    color: var(--primary-blue);
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.destinations-header a:hover {
+    border-bottom-color: var(--primary-blue);
+}
+
+/* Grid de tarjetas */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    cursor: default;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card-img {
+    height: 180px;
+    background: var(--primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.2);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Imágenes ficticias con degradados y emojis */
+.card-img-1 {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+}
+.card-img-2 {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+.card-img-3 {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+.card-img-4 {
+    background: linear-gradient(135deg, #fa709a, #fee140);
+}
+
+.card-img .city-emoji {
+    font-size: 4rem;
+    opacity: 1;
+    color: white;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+    padding: 20px 22px 25px;
+}
+
+.card-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+}
+
+.card-content .country {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+.card-content .price {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+}
+
+.card-content .price small {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-gray);
+}
+
+.card-content .rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    color: var(--accent-orange);
+    font-weight: 600;
+}
+
+.card-content .rating span {
+    color: var(--text-gray);
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.card .btn-card {
+    display: inline-block;
+    margin-top: 15px;
+    background: transparent;
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    padding: 8px 25px;
+    border-radius: 40px;
+    font-weight: 600;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.card .btn-card:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+/* ========================================
+   6. PIE DE PÁGINA (FOOTER)
+   ======================================== */
+.footer {
+    background: #0b1a33;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 40px 5% 20px;
+    margin-top: 40px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.footer-col h4 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+    transition: var(--transition);
+}
+
+.footer-col ul li a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 25px;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-bottom strong {
+    color: white;
+}
+
+/* ========================================
+   7. RESPONSIVE (adaptación a móviles)
+   ======================================== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 5%;
+        gap: 10px;
+    }
+
+    .nav-links {
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero {
+        padding: 40px 5% 70px;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+    }
+
+    .tabs {
+        max-width: 300px;
+        flex-wrap: nowrap;
+    }
+
+    .tab-btn {
+        padding: 6px 16px;
+        font-size: 0.8rem;
+    }
+
+    .search-box {
+        border-radius: 20px;
+        padding: 20px;
+        flex-direction: column;
+        align-items: stretch;
+        background: white;
+    }
+
+    .search-box .field {
+        flex: 1 1 auto;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+        padding: 5px 0;
+    }
+
+    .field-divider {
+        display: none;
+    }
+
+    .search-btn {
+        width: 100%;
+        padding: 16px;
+        margin-top: 10px;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .destinations-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}

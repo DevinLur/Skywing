@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyWing - Tu buscador de viajes</title>
+
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Enlace al archivo JavaScript -->
+    <script src="script.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<body>
+
+    <!-- ============================================
+    BARRA DE NAVEGACIÓN
+    ============================================ -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Sky<span>Wing</span></div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Vuelos</a></li>
+                <li><a href="#">Hoteles</a></li>
+                <li><a href="#">Coches</a></li>
+                <li><a href="#">Paquetes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ============================================
+    SECCIÓN BUSCADOR
+    ============================================ -->
+    <section class="hero">
+        <h1>✈️ Encuentra tu próximo destino</h1>
+        <p>Compara precios en cientos de aerolíneas al instante.</p>
+
+        <!-- Pestañas -->
+        <div class="tabs">
+            <button class="tab-btn active">✈️ Vuelos</button>
+            <button class="tab-btn">🏨 Hoteles</button>
+            <button class="tab-btn">🚗 Coches</button>
+        </div>
+
+        <!-- Formulario de búsqueda -->
+        <form class="search-box" onsubmit="alert('¡Búsqueda ficticia iniciada! (Proyecto universitario)'); return false;">
+            <div class="field">
+                <label for="origin">Origen</label>
+                <input type="text" id="origin" placeholder="Ciudad o aeropuerto" value="Madrid (MAD)">
+            </div>
+
+            <div class="field-divider"></div>
+
+            <div class="field">
+                <label for="dest">Destino</label>
+                <input type="text" id="dest" placeholder="¿A dónde vas?" value="París (PAR)">
+            </div>
+
+            <div class="field-divider"></div>
+
+            <div class="field">
+                <label for="date">Fecha</label>
+                <input type="date" id="date" value="2026-09-15">
+            </div>
+
+            <button type="submit" class="search-btn">🔍 Buscar</button>
+        </form>
+    </section>
+
+    <!-- ============================================
+    DESTINOS POPULARES (TARJETAS FICTICIAS)
+    ============================================ -->
+    <section class="destinations">
+        <div class="destinations-header">
+            <h2>Destinos <span>populares</span></h2>
+            <a href="#">Ver todos →</a>
+        </div>
+
+        <div class="card-grid">
+
+            <!-- Tarjeta 1 -->
+            <div class="card">
+                <div class="card-img card-img-1">
+                    <span class="city-emoji">🏝️</span>
+                </div>
+                <div class="card-content">
+                    <h3>Costa Esmeralda</h3>
+                    <p class="country">🇲🇽 México</p>
+                    <div class="price">$299 <small>por persona</small></div>
+                    <div class="rating">★★★★☆ <span>4.2 (203)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="card">
+                <div class="card-img card-img-2">
+                    <span class="city-emoji">🗽</span>
+                </div>
+                <div class="card-content">
+                    <h3>Nueva York</h3>
+                    <p class="country">🇺🇸 EE.UU.</p>
+                    <div class="price">$459 <small>por persona</small></div>
+                    <div class="rating">★★★★★ <span>4.8 (512)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="card">
+                <div class="card-img card-img-3">
+                    <span class="city-emoji">🏔️</span>
+                </div>
+                <div class="card-content">
+                    <h3>Fiordo Aurora</h3>
+                    <p class="country">🇳🇴 Noruega</p>
+                    <div class="price">$675 <small>por persona</small></div>
+                    <div class="rating">★★★★☆ <span>4.5 (178)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <!-- Tarjeta 4 -->
+            <div class="card">
+                <div class="card-img card-img-4">
+                    <span class="city-emoji">🌸</span>
+                </div>
+                <div class="card-content">
+                    <h3>Kioto Sakura</h3>
+                    <p class="country">🇯🇵 Japón</p>
+                    <div class="price">$829 <small>por persona</small></div>
+                    <div class="rating">★★★★★ <span>4.9 (634)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================
+    PIE DE PÁGINA (FOOTER)
+    ============================================ -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>✈️ SkyWing</h4>
+                <p style="max-width: 250px; line-height: 1.8;">
+                    Comparador de viajes ficticio creado para proyecto universitario. 
+                    Todos los datos son inventados.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#">Acerca de</a></li>
+                    <li><a href="#">Trabaja con nosotros</a></li>
+                    <li><a href="#">Prensa</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Soporte</h4>
+                <ul>
+                    <li><a href="#">Centro de ayuda</a></li>
+                    <li><a href="#">Cancelaciones</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Términos</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 <strong>SkyWing</strong> — Proyecto académico, todos los derechos reservados (ficticios).
+        </div>
+    </footer>
+
+</body>
+</html>
