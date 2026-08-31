@@ -1,150 +1,150 @@
-// ========================================
-// 1. FUNCIÓN PARA CAMBIAR DE PESTAÑAS
-// ========================================
+
+// ------------------------------------------------------------
+// 1. FUNCION para cambiar entre secciones
+// ------------------------------------------------------------
+function cambiarSeccion(seccionId) {
+    var buscador = document.getElementById('seccion-buscador');
+    var login = document.getElementById('seccion-login');
+    var destinos = document.getElementById('seccion-destinos');
+
+    if (seccionId === 'login') {
+        buscador.style.display = 'none';
+        login.style.display = 'block';
+        destinos.style.display = 'none';
+    } else {
+        buscador.style.display = 'block';
+        login.style.display = 'none';
+        destinos.style.display = 'block';
+    }
+}
+
+// ------------------------------------------------------------
+// 2. FUNCION para cambiar pestaña
+// ------------------------------------------------------------
 function cambiarPestana(elemento) {
-    // 1.1 Eliminar la clase 'active' de todas las pestañas
     var pestañas = document.querySelectorAll('.tab-btn');
     for (var i = 0; i < pestañas.length; i++) {
         pestañas[i].classList.remove('active');
     }
-    
-    // 1.2 Agregar la clase 'active' a la pestaña clickeada
     elemento.classList.add('active');
-    
-    // 1.3 Mostrar un mensaje según la pestaña seleccionada
-    var textoPestaña = elemento.textContent.trim();
-    mostrarMensaje('Has seleccionado: ' + textoPestaña);
+
+    var texto = elemento.textContent.trim();
+    mostrarMensaje('Has seleccionado: ' + texto);
 }
 
-// ========================================
-// 2. FUNCIÓN PARA MOSTRAR MENSAJES TEMPORALES
-// ========================================
+// ------------------------------------------------------------
+// 3. FUNCION para mostrar mensajes flotantes
+// ------------------------------------------------------------
 function mostrarMensaje(mensaje) {
-    // 2.1 Verificar si ya existe un mensaje y eliminarlo
     var mensajeExistente = document.querySelector('.mensaje-flotante');
     if (mensajeExistente) {
         mensajeExistente.remove();
     }
-    
-    // 2.2 Crear el elemento del mensaje
+
     var divMensaje = document.createElement('div');
     divMensaje.className = 'mensaje-flotante';
     divMensaje.textContent = mensaje;
-    
-    // 2.3 Estilos básicos para el mensaje (en línea para no depender del CSS)
+
     divMensaje.style.position = 'fixed';
     divMensaje.style.bottom = '20px';
     divMensaje.style.left = '50%';
     divMensaje.style.transform = 'translateX(-50%)';
-    divMensaje.style.backgroundColor = '#1a4d8f';
+    divMensaje.style.backgroundColor = '#1b2a47';
     divMensaje.style.color = 'white';
     divMensaje.style.padding = '12px 24px';
     divMensaje.style.borderRadius = '30px';
-    divMensaje.style.boxShadow = '0 8px 25px rgba(0,0,0,0.2)';
+    divMensaje.style.boxShadow = '0 8px 20px rgba(0,0,0,0.25)';
     divMensaje.style.zIndex = '999';
     divMensaje.style.fontWeight = '500';
     divMensaje.style.fontSize = '1rem';
-    divMensaje.style.transition = 'all 0.3s ease';
-    
-    // 2.4 Agregar al body
+    divMensaje.style.transition = 'opacity 0.3s';
+
     document.body.appendChild(divMensaje);
-    
-    // 2.5 Desaparecer automáticamente después de 3 segundos
+
     setTimeout(function() {
-        if (divMensaje) {
-            divMensaje.style.opacity = '0';
-            setTimeout(function() {
-                if (divMensaje) {
-                    divMensaje.remove();
-                }
-            }, 300);
-        }
+        divMensaje.style.opacity = '0';
+        setTimeout(function() {
+            if (divMensaje) {
+                divMensaje.remove();
+            }
+        }, 300);
     }, 3000);
 }
 
-// ========================================
-// 3. FUNCIÓN PARA BUSCAR (SIMULADA)
-// ========================================
+// ------------------------------------------------------------
+// 4. FUNCION para obtener el precio
+// ------------------------------------------------------------
+function obtenerPrecio(origen, destino) {
+    if (origen === destino) {
+        return null;
+    }
+
+    var baseCost = {
+        "Bogotá": 0,
+        "Medellín": 100,
+        "Cali": 150,
+        "Cartagena": 200,
+        "Santa Marta": 220,
+        "Miami": 800,
+        "Madrid": 1200,
+        "Ciudad de México": 700,
+        "Buenos Aires": 900,
+        "Lima": 600,
+        "Santiago": 850
+    };
+
+    var precio = (baseCost[origen] + baseCost[destino]) * 2000 + 200000;
+    return precio;
+}
+
+// ------------------------------------------------------------
+// 5. FUNCION para buscar el vuelo
+// ------------------------------------------------------------
 function buscarViaje() {
-    // 3.1 Obtener los valores del formulario
-    var origen = document.getElementById('origin').value;
-    var destino = document.getElementById('dest').value;
-    var fecha = document.getElementById('date').value;
-    
-    // 3.2 Validar que los campos no estén vacíos
+    var origenSelect = document.getElementById('origin');
+    var destinoSelect = document.getElementById('dest');
+    var fechaInput = document.getElementById('date');
+
+    var origen = origenSelect.value;
+    var destino = destinoSelect.value;
+    var fecha = fechaInput.value;
+
     if (origen === '' || destino === '' || fecha === '') {
-        mostrarMensaje('⚠️ Por favor, completa todos los campos');
+        mostrarMensaje('Completa todos los campos (origen, destino y fecha)');
         return false;
     }
-    
-    // 3.3 Crear mensaje con los datos de búsqueda
-    var mensajeBusqueda = '🔍 Buscando vuelos de ' + origen + ' a ' + destino + ' para el ' + formatearFecha(fecha);
-    mostrarMensaje(mensajeBusqueda);
-    
-    // 3.4 Simular que se están mostrando resultados
-    simularResultados(origen, destino, fecha);
-    
-    // 3.5 Evitar que el formulario se envíe
+
+    var precio = obtenerPrecio(origen, destino);
+
+    if (precio === null) {
+        mostrarMensaje('El origen y el destino no pueden ser iguales');
+        return false;
+    }
+
+    var precioFormateado = precio.toLocaleString('es-CO');
+
+    var aerolineas = ['Iberia', 'Air Europa', 'Vueling', 'LATAM', 'Avianca', 'Delta', 'Copa Airlines'];
+    var aerolinea = aerolineas[Math.floor(Math.random() * aerolineas.length)];
+
+    var horas = Math.floor(Math.random() * 8) + 1;
+    var minutos = Math.floor(Math.random() * 60);
+    var duracion = horas + 'h ' + minutos + 'min';
+
+    var mensaje = 'Vuelo encontrado: ' + aerolinea + ' | ' + origen + ' -> ' + destino +
+                  ' | Precio: $' + precioFormateado + ' COP | Duracion: ' + duracion;
+    mostrarMensaje(mensaje);
+
+    guardarHistorial(origen, destino, precio, aerolinea);
+
     return false;
 }
 
-// ========================================
-// 4. FUNCIÓN PARA FORMATEAR FECHA
-// ========================================
-function formatearFecha(fecha) {
-    if (!fecha) return 'fecha no especificada';
-    
-    var partes = fecha.split('-');
-    var año = partes[0];
-    var mes = partes[1];
-    var dia = partes[2];
-    
-    var meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
-                 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-    
-    return dia + ' de ' + meses[parseInt(mes) - 1] + ' de ' + año;
-}
-
-// ========================================
-// 5. FUNCIÓN PARA SIMULAR RESULTADOS
-// ========================================
-function simularResultados(origen, destino, fecha) {
-    // 5.1 Mostrar un indicador de carga
-    mostrarMensaje('⏳ Buscando las mejores ofertas...');
-    
-    // 5.2 Simular una búsqueda asíncrona (esperar 2 segundos)
-    setTimeout(function() {
-        // 5.3 Generar un precio aleatorio
-        var precio = Math.floor(Math.random() * (800 - 150 + 1)) + 150;
-        
-        // 5.4 Generar una aerolínea aleatoria
-        var aerolineas = ['Iberia', 'Air Europa', 'Vueling', 'Ryanair', 'LATAM', 'Avianca', 'Delta'];
-        var aerolinea = aerolineas[Math.floor(Math.random() * aerolineas.length)];
-        
-        // 5.5 Generar una duración de vuelo aleatoria
-        var horas = Math.floor(Math.random() * 8) + 1;
-        var minutos = Math.floor(Math.random() * 60);
-        var duracion = horas + 'h ' + minutos + 'min';
-        
-        // 5.6 Mostrar resultado
-        var mensajeResultado = '✈️ ' + aerolinea + ': ' + origen + ' → ' + destino + 
-                              ' | $' + precio + ' | Duración: ' + duracion;
-        mostrarMensaje(mensajeResultado);
-        
-        // 5.7 Guardar en el historial
-        guardarHistorial(origen, destino, precio, aerolinea);
-        
-    }, 2000);
-}
-
-// ========================================
-// 6. FUNCIÓN PARA GUARDAR HISTORIAL
-// ========================================
+// ------------------------------------------------------------
+// 6. FUNCION para guardar historial
+// ------------------------------------------------------------
 function guardarHistorial(origen, destino, precio, aerolinea) {
-    // 6.1 Obtener el historial actual (o crearlo vacío)
     var historial = JSON.parse(localStorage.getItem('historialViajes')) || [];
-    
-    // 6.2 Crear un nuevo registro
+
     var registro = {
         origen: origen,
         destino: destino,
@@ -152,158 +152,259 @@ function guardarHistorial(origen, destino, precio, aerolinea) {
         aerolinea: aerolinea,
         fechaBusqueda: new Date().toLocaleString()
     };
-    
-    // 6.3 Agregar al historial (máximo 5 registros)
+
     historial.unshift(registro);
     if (historial.length > 5) {
         historial.pop();
     }
-    
-    // 6.4 Guardar en localStorage
+
     localStorage.setItem('historialViajes', JSON.stringify(historial));
-    
-    // 6.5 Actualizar la interfaz
     mostrarHistorial();
 }
 
-// ========================================
-// 7. FUNCIÓN PARA MOSTRAR HISTORIAL
-// ========================================
+// ------------------------------------------------------------
+// 7. FUNCION para mostrar historial
+// ------------------------------------------------------------
 function mostrarHistorial() {
-    // 7.1 Obtener el historial
     var historial = JSON.parse(localStorage.getItem('historialViajes')) || [];
-    
-    // 7.2 Buscar o crear el contenedor de historial
     var contenedor = document.getElementById('historial-container');
-    
+
     if (!contenedor) {
-        // Crear el contenedor si no existe
         contenedor = document.createElement('div');
         contenedor.id = 'historial-container';
-        contenedor.style.marginTop = '30px';
-        contenedor.style.padding = '20px';
-        contenedor.style.backgroundColor = 'white';
-        contenedor.style.borderRadius = '12px';
-        contenedor.style.boxShadow = '0 4px 15px rgba(0,0,0,0.08)';
-        
-        // Agregar después de la sección de destinos
-        var seccionDestinos = document.querySelector('.destinations');
-        if (seccionDestinos) {
-            seccionDestinos.parentNode.insertBefore(contenedor, seccionDestinos.nextSibling);
-        }
+        contenedor.style.maxWidth = '1200px';
+        contenedor.style.margin = '20px auto';
+        contenedor.style.padding = '0 5%';
+        var footer = document.querySelector('.footer');
+        footer.parentNode.insertBefore(contenedor, footer.nextSibling);
     }
-    
-    // 7.3 Si no hay historial, mostrar mensaje
+
     if (historial.length === 0) {
-        contenedor.innerHTML = '<h3 style="color: #1a4d8f; margin-bottom: 15px;">📋 Historial de búsquedas</h3>' +
-                              '<p style="color: #888;">Aún no has realizado ninguna búsqueda.</p>';
+        contenedor.innerHTML = '<h3 style="color: #1b2a47; margin-bottom: 15px;">Historial de busquedas</h3>' +
+                               '<p style="color: #888;">Aun no has realizado ninguna busqueda.</p>';
         return;
     }
-    
-    // 7.4 Construir la lista del historial
-    var html = '<h3 style="color: #1a4d8f; margin-bottom: 15px;">📋 Últimas búsquedas</h3>';
+
+    var html = '<h3 style="color: #1b2a47; margin-bottom: 15px;">Ultimas busquedas</h3>';
     html += '<ul style="list-style: none; padding: 0;">';
-    
+
     for (var i = 0; i < historial.length; i++) {
         var item = historial[i];
-        html += '<li style="padding: 10px 15px; margin-bottom: 8px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #f5a623;">';
-        html += '<strong>' + item.origen + '</strong> → <strong>' + item.destino + '</strong> ';
-        html += '| ✈️ ' + item.aerolinea + ' | 💰 $' + item.precio;
+        var precioFormateado = item.precio.toLocaleString('es-CO');
+        html += '<li style="padding: 10px 15px; margin-bottom: 8px; background: #f2f6f9; border-radius: 8px; border-left: 4px solid #b86b3a;">';
+        html += '<strong>' + item.origen + '</strong> -> <strong>' + item.destino + '</strong> ';
+        html += '| ' + item.aerolinea + ' | $' + precioFormateado + ' COP';
         html += '<br><small style="color: #888;">' + item.fechaBusqueda + '</small>';
         html += '</li>';
     }
-    
+
     html += '</ul>';
-    
-    // 7.5 Agregar botón para limpiar historial
-    html += '<button onclick="limpiarHistorial()" style="margin-top: 15px; padding: 8px 20px; background: #dc3545; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">🗑️ Limpiar historial</button>';
-    
+    html += '<button onclick="limpiarHistorial()" style="margin-top: 15px; padding: 8px 20px; background: #0a0a0f; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">Limpiar historial</button>';
+
     contenedor.innerHTML = html;
 }
 
-// ========================================
-// 8. FUNCIÓN PARA LIMPIAR HISTORIAL
-// ========================================
+// ------------------------------------------------------------
+// 8. FUNCION para limpiar historial
+// ------------------------------------------------------------
 function limpiarHistorial() {
-    if (confirm('¿Seguro que quieres limpiar todo el historial?')) {
+    if (confirm('Seguro que quieres limpiar todo el historial?')) {
         localStorage.removeItem('historialViajes');
         mostrarHistorial();
-        mostrarMensaje('🧹 Historial limpiado correctamente');
+        mostrarMensaje('Historial limpiado correctamente');
     }
 }
 
-// ========================================
-// 9. FUNCIÓN PARA VER OFERTAS (SIMULADA)
-// ========================================
+// ------------------------------------------------------------
+// 9. FUNCION para ver oferta
+// ------------------------------------------------------------
 function verOferta(destino, precio) {
     if (!destino || !precio) {
-        mostrarMensaje('⚠️ Oferta no disponible');
+        mostrarMensaje('Oferta no disponible');
         return;
     }
-    
-    var mensaje = '🎉 Oferta especial para ' + destino + ' desde $' + precio + ' por persona';
-    mostrarMensaje(mensaje);
-    
-    // Simular redirección
-    console.log('Redirigiendo a oferta de ' + destino);
+    var precioFormateado = precio.toLocaleString('es-CO');
+    mostrarMensaje('Oferta especial para ' + destino + ' desde $' + precioFormateado + ' COP por persona');
 }
 
-// ========================================
-// 10. FUNCIÓN PARA INICIALIZAR LA PÁGINA
-// ========================================
+// ------------------------------------------------------------
+// 10. FUNCION para el login
+// ------------------------------------------------------------
+function loginUsuario() {
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var mensajeElemento = document.getElementById('login-mensaje');
+
+    if (email === '' || password === '') {
+        mensajeElemento.textContent = 'Completa todos los campos.';
+        mensajeElemento.style.color = '#b86b3a';
+        return false;
+    }
+
+    if (password.length < 4) {
+        mensajeElemento.textContent = 'La contraseña debe tener al menos 4 caracteres.';
+        mensajeElemento.style.color = '#b86b3a';
+        return false;
+    }
+
+    mensajeElemento.textContent = 'Bienvenido, ' + email + '. Sesion iniciada.';
+    mensajeElemento.style.color = '#1b2a47';
+    mostrarMensaje('Sesion iniciada correctamente');
+
+    var btnLogin = document.querySelector('.login-btn');
+    btnLogin.textContent = 'Sesion iniciada';
+    btnLogin.style.background = '#2a5a3a';
+    btnLogin.disabled = true;
+
+    localStorage.setItem('usuarioActual', email);
+
+    return false;
+}
+
+// ------------------------------------------------------------
+// 11. FUNCION para iniciar los carruseles
+//     Esto hace que al poner el mouse encima
+// ------------------------------------------------------------
+function iniciarCarruseles() {
+    // 11.1 Seleccionamos todos los contenedores con clase 'carousel'
+    var carruseles = document.querySelectorAll('.carousel');
+
+    // 11.2 Recorremos cada carrusel con un bucle for
+    for (var i = 0; i < carruseles.length; i++) {
+        var carrusel = carruseles[i];
+        var track = carrusel.querySelector('.carousel-track');
+        var imagenes = track.querySelectorAll('img');
+
+        // Variable que guarda en qué imagen estamos (0, 1 o 2)
+        var indice = 0;
+        // Variable para guardar el intervalo (para poder detenerlo)
+        var intervalo = null;
+
+        // 11.3 Funcion que cambia a la siguiente imagen
+        function cambiarImagen() {
+            // Aumentamos el indice, si llega a 3 vuelve a 0
+            indice = (indice + 1) % 3;
+            // Movemos el track horizontalmente: -0%, -33.33% o -66.66%
+            track.style.transform = 'translateX(-' + (indice * 33.333) + '%)';
+        }
+
+        // 11.4 Funcion que resetea el carrusel a la primera imagen
+        function resetearCarrusel() {
+            // Si existe un intervalo, lo detenemos
+            if (intervalo) {
+                clearInterval(intervalo);
+                intervalo = null;
+            }
+            // Volvemos a la imagen 1
+            indice = 0;
+            track.style.transform = 'translateX(0)';
+        }
+
+        // 11.5 Evento: cuando el mouse ENTRA al carrusel
+        carrusel.addEventListener('mouseenter', function() {
+            // Primero reseteamos para evitar conflictos
+            resetearCarrusel();
+            // Iniciamos un intervalo que cambie la imagen cada 1.2 segundos
+            intervalo = setInterval(cambiarImagen, 1200);
+        });
+
+        // 11.6 Evento: cuando el mouse SALE del carrusel
+        carrusel.addEventListener('mouseleave', function() {
+            // Detenemos el carrusel y volvemos a la primera imagen
+            resetearCarrusel();
+        });
+    }
+}
+
+// ------------------------------------------------------------
+// 12. FUNCION para inicializar la pagina
+// ------------------------------------------------------------
 function inicializarPagina() {
-    // 10.1 Agregar eventos a las pestañas
+    var enlaceVuelos = document.getElementById('tab-vuelos');
+    var enlaceLogin = document.getElementById('tab-login');
+
+    enlaceVuelos.onclick = function(e) {
+        e.preventDefault();
+        cambiarSeccion('vuelos');
+        var enlaces = document.querySelectorAll('.nav-links li a');
+        for (var i = 0; i < enlaces.length; i++) {
+            enlaces[i].classList.remove('active');
+        }
+        this.classList.add('active');
+    };
+
+    enlaceLogin.onclick = function(e) {
+        e.preventDefault();
+        cambiarSeccion('login');
+        var enlaces = document.querySelectorAll('.nav-links li a');
+        for (var i = 0; i < enlaces.length; i++) {
+            enlaces[i].classList.remove('active');
+        }
+        this.classList.add('active');
+    };
+
     var pestañas = document.querySelectorAll('.tab-btn');
-    for (var i = 0; i < pestañas.length; i++) {
-        pestañas[i].onclick = function() {
+    for (var j = 0; j < pestañas.length; j++) {
+        pestañas[j].onclick = function() {
             cambiarPestana(this);
         };
     }
-    
-    // 10.2 Agregar evento al formulario
-    var formulario = document.querySelector('.search-box');
+
+    var formulario = document.getElementById('form-busqueda');
     if (formulario) {
         formulario.onsubmit = function(e) {
             e.preventDefault();
             return buscarViaje();
         };
     }
-    
-    // 10.3 Agregar eventos a los botones de "Ver oferta"
+
     var botonesOferta = document.querySelectorAll('.btn-card');
-    for (var j = 0; j < botonesOferta.length; j++) {
-        botonesOferta[j].onclick = function() {
-            // Obtener el destino y precio de la tarjeta
-            var tarjeta = this.closest('.card');
-            var destino = tarjeta.querySelector('h3').textContent;
-            var precioTexto = tarjeta.querySelector('.price').textContent;
-            var precio = precioTexto.replace('$', '').replace(' por persona', '').trim();
+    for (var k = 0; k < botonesOferta.length; k++) {
+        botonesOferta[k].onclick = function() {
+            var destino = this.getAttribute('data-destino');
+            var precio = parseInt(this.getAttribute('data-precio'));
             verOferta(destino, precio);
         };
     }
-    
-    // 10.4 Agregar eventos a los enlaces del footer (para demostración)
-    var enlacesFooter = document.querySelectorAll('.footer-col ul li a');
-    for (var k = 0; k < enlacesFooter.length; k++) {
-        enlacesFooter[k].onclick = function(e) {
+
+    var verTodos = document.getElementById('ver-todos');
+    if (verTodos) {
+        verTodos.onclick = function(e) {
             e.preventDefault();
-            mostrarMensaje('🔗 Enlace: ' + this.textContent + ' (simulación)');
+            mostrarMensaje('Mostrando todos los destinos disponibles.');
         };
     }
-    
-    // 10.5 Mostrar el historial al cargar la página
+
+    var enlacesFooter = document.querySelectorAll('.footer-col ul li a');
+    for (var l = 0; l < enlacesFooter.length; l++) {
+        enlacesFooter[l].onclick = function(e) {
+            e.preventDefault();
+            mostrarMensaje('Enlace: ' + this.textContent);
+        };
+    }
+
+    // ============================================
+    // LLAMAMOS A LA FUNCION DEL CARRUSEL AQUI
+    // ============================================
+    iniciarCarruseles();
+
     mostrarHistorial();
-    
-    // 10.6 Mensaje de bienvenida
-    setTimeout(function() {
-        mostrarMensaje('👋 ¡Bienvenido a SkyWing! Busca tu próximo destino');
-    }, 500);
+
+    var usuarioGuardado = localStorage.getItem('usuarioActual');
+    if (usuarioGuardado) {
+        setTimeout(function() {
+            mostrarMensaje('Bienvenido de nuevo, ' + usuarioGuardado);
+        }, 600);
+    } else {
+        setTimeout(function() {
+            mostrarMensaje('Bienvenido a SkyWing. Busca tu proximo destino.');
+        }, 500);
+    }
 }
 
-// ========================================
-// 11. EJECUTAR CUANDO LA PÁGINA ESTÉ LISTA
-// ========================================
-// Usamos window.onload para asegurar que el DOM esté cargado
+// ------------------------------------------------------------
+// 13. EJECUTAR cuando la pagina cargue
+// ------------------------------------------------------------
 window.onload = function() {
     inicializarPagina();
 };

@@ -1,15 +1,16 @@
 /* ========================================
-   1. VARIABLES CSS (colores y fuentes)
+   1. VARIABLES CSS
    ======================================== */
 :root {
-    --primary-blue: #1a4d8f;
-    --primary-gradient: linear-gradient(135deg, #0b2b5c, #1e6df2);
-    --accent-orange: #f5a623;
-    --text-dark: #1a1a2e;
-    --text-gray: #5a5a7a;
-    --bg-light: #f4f7fc;
-    --white: #ffffff;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --black: #f3f3fa;
+    --dark-gray: #f0f0f6;
+    --navy: #1b2a47;
+    --accent: #b86b3a;
+    --text-dark: #1e1e24;
+    --text-gray: #5a5a66;
+    --bg-light: #e8eaed;
+    --white: #fafbfc;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     --border-radius: 12px;
     --transition: all 0.3s ease;
 }
@@ -24,7 +25,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
     background-color: var(--bg-light);
     color: var(--text-dark);
     line-height: 1.6;
@@ -36,16 +37,16 @@ a {
 }
 
 /* ========================================
-   3. BARRA DE NAVEGACIÓN
+   3. BARRA DE NAVEGACION
    ======================================== */
 .navbar {
-    background: var(--white);
+    background: var(--black);
     padding: 0 5%;
     height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -54,10 +55,10 @@ a {
 .logo {
     font-size: 1.8rem;
     font-weight: 800;
-    color: var(--primary-blue);
+    color: var(--white);
 }
 .logo span {
-    color: var(--accent-orange);
+    color: var(--accent);
 }
 
 .nav-links {
@@ -71,24 +72,24 @@ a {
     padding: 8px 12px;
     border-radius: 30px;
     transition: var(--transition);
-    color: var(--text-gray);
+    color: #aab;
 }
 
 .nav-links li a:hover {
-    background-color: var(--bg-light);
-    color: var(--primary-blue);
+    background-color: #2a2a35;
+    color: var(--white);
 }
 
 .nav-links .active {
-    color: var(--primary-blue);
-    background-color: #e9eff7;
+    color: var(--white);
+    background-color: var(--navy);
 }
 
 /* ========================================
-   4. SECCIÓN HÉROE (BUSCADOR)
+   4. SECCION BUSCADOR
    ======================================== */
 .hero {
-    background: var(--primary-gradient);
+    background: var(--navy);
     padding: 60px 5% 80px;
     text-align: center;
     color: var(--white);
@@ -105,7 +106,7 @@ a {
 
 .hero p {
     font-size: 1.2rem;
-    opacity: 0.9;
+    opacity: 0.8;
     margin-bottom: 30px;
 }
 
@@ -114,7 +115,7 @@ a {
     display: flex;
     justify-content: center;
     gap: 5px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 50px;
     padding: 6px;
     max-width: 400px;
@@ -125,7 +126,7 @@ a {
 .tab-btn {
     background: transparent;
     border: none;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.6);
     padding: 10px 28px;
     border-radius: 40px;
     font-weight: 600;
@@ -136,15 +137,15 @@ a {
 
 .tab-btn.active {
     background: var(--white);
-    color: var(--primary-blue);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: var(--navy);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .tab-btn:hover:not(.active) {
     color: white;
 }
 
-/* Caja del formulario de búsqueda */
+/* Caja del formulario */
 .search-box {
     background: var(--white);
     border-radius: 60px;
@@ -174,6 +175,7 @@ a {
     letter-spacing: 0.5px;
 }
 
+.search-box .field select,
 .search-box .field input {
     border: none;
     padding: 8px 0;
@@ -183,15 +185,17 @@ a {
     background: transparent;
     outline: none;
     font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
 }
 
-.search-box .field input::placeholder {
-    color: #b0b0c0;
-    font-weight: 400;
+.search-box .field select option {
+    background: white;
+    color: var(--text-dark);
 }
 
 .search-btn {
-    background: var(--accent-orange);
+    background: var(--accent);
     border: none;
     color: var(--white);
     padding: 14px 40px;
@@ -200,26 +204,104 @@ a {
     font-size: 1rem;
     cursor: pointer;
     transition: var(--transition);
-    box-shadow: 0 8px 20px rgba(245, 166, 35, 0.3);
+    box-shadow: 0 8px 20px rgba(184, 107, 58, 0.3);
     flex: 0 0 auto;
 }
 
 .search-btn:hover {
     transform: scale(1.03);
-    background: #e09515;
-    box-shadow: 0 12px 25px rgba(245, 166, 35, 0.5);
+    background: #9e5a2e;
+    box-shadow: 0 12px 25px rgba(184, 107, 58, 0.4);
 }
 
-/* Separador visual entre campos */
 .field-divider {
     width: 1px;
     height: 40px;
-    background: #ddd;
+    background: #ccc;
     flex-shrink: 0;
 }
 
 /* ========================================
-   5. SECCIÓN DE DESTINOS POPULARES
+   5. SECCION LOGIN
+   ======================================== */
+.login-section {
+    padding: 40px 5%;
+    max-width: 500px;
+    margin: 0 auto 40px;
+}
+
+.login-container {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border: 1px solid #d0d4d8;
+}
+
+.login-container h2 {
+    text-align: center;
+    color: var(--black);
+    margin-bottom: 25px;
+}
+
+.login-field {
+    margin-bottom: 20px;
+}
+
+.login-field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+.login-field input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #d0d7dd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #f8fafc;
+    transition: var(--transition);
+}
+
+.login-field input:focus {
+    border-color: var(--navy);
+    outline: none;
+    background: white;
+}
+
+.login-field small {
+    color: var(--text-gray);
+    font-size: 0.8rem;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--black);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.login-btn:hover {
+    background: #2a2a35;
+}
+
+.login-msg {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+/* ========================================
+   6. DESTINOS POPULARES
    ======================================== */
 .destinations {
     padding: 20px 5% 60px;
@@ -241,21 +323,20 @@ a {
 }
 
 .destinations-header h2 span {
-    color: var(--primary-blue);
+    color: var(--navy);
 }
 
 .destinations-header a {
-    color: var(--primary-blue);
+    color: var(--navy);
     font-weight: 600;
     border-bottom: 2px solid transparent;
     transition: var(--transition);
 }
 
 .destinations-header a:hover {
-    border-bottom-color: var(--primary-blue);
+    border-bottom-color: var(--navy);
 }
 
-/* Grid de tarjetas */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -269,47 +350,54 @@ a {
     box-shadow: var(--shadow);
     transition: var(--transition);
     cursor: default;
+    border: 1px solid #e0e3e7;
 }
 
 .card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
 }
 
-.card-img {
+/* ---- ESTILOS DEL CARRUSEL  ---- */
+.card-img.carousel {
     height: 180px;
-    background: var(--primary-gradient);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3.5rem;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.2);
-    background-size: cover;
-    background-position: center;
+    background: var(--dark-gray);
+    overflow: hidden;
     position: relative;
 }
 
-/* Imágenes ficticias con degradados y emojis */
-.card-img-1 {
-    background: linear-gradient(135deg, #f093fb, #f5576c);
-}
-.card-img-2 {
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
-}
-.card-img-3 {
-    background: linear-gradient(135deg, #43e97b, #38f9d7);
-}
-.card-img-4 {
-    background: linear-gradient(135deg, #fa709a, #fee140);
+.carousel-track {
+    display: flex;
+    width: 300%; /* 3 imagenes ocupan el 300% del ancho */
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
 }
 
-.card-img .city-emoji {
-    font-size: 4rem;
-    opacity: 1;
-    color: white;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+.carousel-track img {
+    width: 33.333%; /* Cada imagen ocupa un tercio del track */
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
 }
+
+/* Etiqueta de la ciudad (flota sobre el carrusel) */
+.city-label {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    pointer-events: none; /* Evita que bloquee el hover del mouse */
+}
+
+/* ------------------------------------------- */
 
 .card-content {
     padding: 20px 22px 25px;
@@ -327,9 +415,9 @@ a {
 }
 
 .card-content .price {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 800;
-    color: var(--primary-blue);
+    color: var(--navy);
 }
 
 .card-content .price small {
@@ -343,7 +431,7 @@ a {
     align-items: center;
     gap: 6px;
     margin-top: 8px;
-    color: var(--accent-orange);
+    color: var(--accent);
     font-weight: 600;
 }
 
@@ -357,8 +445,8 @@ a {
     display: inline-block;
     margin-top: 15px;
     background: transparent;
-    border: 2px solid var(--primary-blue);
-    color: var(--primary-blue);
+    border: 2px solid var(--navy);
+    color: var(--navy);
     padding: 8px 25px;
     border-radius: 40px;
     font-weight: 600;
@@ -367,18 +455,19 @@ a {
 }
 
 .card .btn-card:hover {
-    background: var(--primary-blue);
+    background: var(--navy);
     color: white;
 }
 
 /* ========================================
-   6. PIE DE PÁGINA (FOOTER)
+   7. PIE DE PAGINA
    ======================================== */
 .footer {
-    background: #0b1a33;
+    background: var(--black);
     color: rgba(255, 255, 255, 0.7);
     padding: 40px 5% 20px;
     margin-top: 40px;
+    border-top: 1px solid #2a2a35;
 }
 
 .footer-content {
@@ -414,7 +503,7 @@ a {
 
 .footer-bottom {
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
     padding-top: 25px;
     margin-top: 30px;
     font-size: 0.9rem;
@@ -428,7 +517,7 @@ a {
 }
 
 /* ========================================
-   7. RESPONSIVE (adaptación a móviles)
+   8. RESPONSIVE
    ======================================== */
 @media (max-width: 768px) {
     .navbar {
@@ -490,6 +579,10 @@ a {
 
     .card-grid {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .login-section {
+        padding: 20px 5%;
     }
 }
 
