@@ -3,61 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkyWing - Tu buscador de viajes</title>
-
-    <!-- Enlace al archivo CSS externo -->
+    <title>SkyWing - Buscador de Viajes</title>
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Enlace al archivo JavaScript -->
     <script src="script.js"></script>
 </head>
 <body>
 
-</body>
-</html>
-<body>
-
-    <!-- ============================================
-    BARRA DE NAVEGACIÓN
-    ============================================ -->
+    <!-- ==========================================
+    BARRA DE NAVEGACION
+    ========================================== -->
     <header>
         <nav class="navbar">
             <div class="logo">Sky<span>Wing</span></div>
             <ul class="nav-links">
-                <li><a href="#" class="active">Vuelos</a></li>
-                <li><a href="#">Hoteles</a></li>
-                <li><a href="#">Coches</a></li>
-                <li><a href="#">Paquetes</a></li>
+                <li><a href="#" class="active" id="tab-vuelos">Vuelos</a></li>
+                <li><a href="#" id="tab-hoteles">Hoteles</a></li>
+                <li><a href="#" id="tab-coches">Coches</a></li>
+                <li><a href="#" id="tab-login">Iniciar Sesion</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- ============================================
-    SECCIÓN BUSCADOR
-    ============================================ -->
-    <section class="hero">
-        <h1>✈️ Encuentra tu próximo destino</h1>
-        <p>Compara precios en cientos de aerolíneas al instante.</p>
+    <!-- ==========================================
+    SECCION BUSCADOR
+    ========================================== -->
+    <section class="hero" id="seccion-buscador">
+        <h1>Encuentra tu proximo destino</h1>
+        <p>Compara precios en cientos de aerolineas al instante.</p>
 
-        <!-- Pestañas -->
         <div class="tabs">
-            <button class="tab-btn active">✈️ Vuelos</button>
-            <button class="tab-btn">🏨 Hoteles</button>
-            <button class="tab-btn">🚗 Coches</button>
+            <button class="tab-btn active" data-tab="vuelos">Vuelos</button>
+            <button class="tab-btn" data-tab="hoteles">Hoteles</button>
+            <button class="tab-btn" data-tab="coches">Coches</button>
         </div>
 
-        <!-- Formulario de búsqueda -->
-        <form class="search-box" onsubmit="alert('¡Búsqueda ficticia iniciada! (Proyecto universitario)'); return false;">
+        <form class="search-box" id="form-busqueda">
             <div class="field">
                 <label for="origin">Origen</label>
-                <input type="text" id="origin" placeholder="Ciudad o aeropuerto" value="Madrid (MAD)">
+                <select id="origin" name="origin">
+                    <option value="">-- Selecciona --</option>
+                    <option value="Bogotá">Bogotá (COL)</option>
+                    <option value="Medellín">Medellín (COL)</option>
+                    <option value="Cali">Cali (COL)</option>
+                    <option value="Cartagena">Cartagena (COL)</option>
+                    <option value="Santa Marta">Santa Marta (COL)</option>
+                    <option value="Miami">Miami (USA)</option>
+                    <option value="Madrid">Madrid (ESP)</option>
+                    <option value="Ciudad de México">Ciudad de México (MEX)</option>
+                    <option value="Buenos Aires">Buenos Aires (ARG)</option>
+                    <option value="Lima">Lima (PER)</option>
+                    <option value="Santiago">Santiago (CHI)</option>
+                </select>
             </div>
 
             <div class="field-divider"></div>
 
             <div class="field">
                 <label for="dest">Destino</label>
-                <input type="text" id="dest" placeholder="¿A dónde vas?" value="París (PAR)">
+                <select id="dest" name="dest">
+                    <option value="">-- Selecciona --</option>
+                    <option value="Bogotá">Bogotá (COL)</option>
+                    <option value="Medellín">Medellín (COL)</option>
+                    <option value="Cali">Cali (COL)</option>
+                    <option value="Cartagena">Cartagena (COL)</option>
+                    <option value="Santa Marta">Santa Marta (COL)</option>
+                    <option value="Miami">Miami (USA)</option>
+                    <option value="Madrid">Madrid (ESP)</option>
+                    <option value="Ciudad de México">Ciudad de México (MEX)</option>
+                    <option value="Buenos Aires">Buenos Aires (ARG)</option>
+                    <option value="Lima">Lima (PER)</option>
+                    <option value="Santiago">Santiago (CHI)</option>
+                </select>
             </div>
 
             <div class="field-divider"></div>
@@ -67,89 +83,176 @@
                 <input type="date" id="date" value="2026-09-15">
             </div>
 
-            <button type="submit" class="search-btn">🔍 Buscar</button>
+            <button type="submit" class="search-btn">Buscar</button>
         </form>
     </section>
 
-    <!-- ============================================
-    DESTINOS POPULARES (TARJETAS FICTICIAS)
-    ============================================ -->
-    <section class="destinations">
+    <!-- ==========================================
+    SECCION LOGIN
+    ========================================== -->
+    <section class="login-section" id="seccion-login" style="display: none;">
+        <div class="login-container">
+            <h2>Iniciar sesion</h2>
+            <form id="form-login" onsubmit="return loginUsuario();">
+                <div class="login-field">
+                    <label for="email">Correo electronico</label>
+                    <input type="email" id="email" placeholder="ejemplo@dominio.com" list="sugerencias-email" required>
+                    <datalist id="sugerencias-email">
+                        <option value="@gmail.com">
+                        <option value="@hotmail.com">
+                        <option value="@outlook.com">
+                        <option value="@yahoo.com">
+                        <option value="@universidad.edu.co">
+                    </datalist>
+                    <small>Escribe tu correo y elige una sugerencia</small>
+                </div>
+                <div class="login-field">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" placeholder="Minimo 4 caracteres" required>
+                </div>
+                <button type="submit" class="login-btn">Ingresar</button>
+                <p class="login-msg" id="login-mensaje"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    DESTINOS POPULARES
+    ========================================== -->
+    <section class="destinations" id="seccion-destinos">
         <div class="destinations-header">
             <h2>Destinos <span>populares</span></h2>
-            <a href="#">Ver todos →</a>
+            <a href="#" id="ver-todos">Ver todos →</a>
         </div>
 
         <div class="card-grid">
 
-            <!-- Tarjeta 1 -->
+            <!-- TARJETA 1: CARTAGENA -->
             <div class="card">
-                <div class="card-img card-img-1">
-                    <span class="city-emoji">🏝️</span>
+                <div class="card-img carousel">
+                    <div class="carousel-track">
+                        <img src="assets/images/cartagena1.jpg" alt="Cartagena 1" onerror="this.style.display='none'">
+                        <img src="assets/images/cartagena2.jpg" alt="Cartagena 2" onerror="this.style.display='none'">
+                        <img src="assets/images/cartagena3.jpg" alt="Cartagena 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Cartagena</span>
                 </div>
                 <div class="card-content">
-                    <h3>Costa Esmeralda</h3>
-                    <p class="country">🇲🇽 México</p>
-                    <div class="price">$299 <small>por persona</small></div>
-                    <div class="rating">★★★★☆ <span>4.2 (203)</span></div>
-                    <button class="btn-card">Ver oferta</button>
+                    <h3>Cartagena</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 1.200.000 <small>por persona</small></div>
+                    <div class="rating">4.2 <span>(203 opiniones)</span></div>
+                    <button class="btn-card" data-destino="Cartagena" data-precio="1200000">Ver oferta</button>
                 </div>
             </div>
 
-            <!-- Tarjeta 2 -->
+            <!-- TARJETA 2: MIAMI -->
             <div class="card">
-                <div class="card-img card-img-2">
-                    <span class="city-emoji">🗽</span>
+                <div class="card-img carousel">
+                    <div class="carousel-track">
+                        <img src="assets/images/miami1.jpg" alt="Miami 1" onerror="this.style.display='none'">
+                        <img src="assets/images/miami2.jpg" alt="Miami 2" onerror="this.style.display='none'">
+                        <img src="assets/images/miami3.jpg" alt="Miami 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Miami</span>
                 </div>
                 <div class="card-content">
-                    <h3>Nueva York</h3>
-                    <p class="country">🇺🇸 EE.UU.</p>
-                    <div class="price">$459 <small>por persona</small></div>
-                    <div class="rating">★★★★★ <span>4.8 (512)</span></div>
-                    <button class="btn-card">Ver oferta</button>
+                    <h3>Miami</h3>
+                    <p class="country">Estados Unidos</p>
+                    <div class="price">$ 2.850.000 <small>por persona</small></div>
+                    <div class="rating">4.8 <span>(512 opiniones)</span></div>
+                    <button class="btn-card" data-destino="Miami" data-precio="2850000">Ver oferta</button>
                 </div>
             </div>
 
-            <!-- Tarjeta 3 -->
+            <!-- TARJETA 3: SANTA MARTA -->
             <div class="card">
-                <div class="card-img card-img-3">
-                    <span class="city-emoji">🏔️</span>
+                <div class="card-img carousel">
+                    <div class="carousel-track">
+                        <img src="assets/images/santamarta1.jpg" alt="Santa Marta 1" onerror="this.style.display='none'">
+                        <img src="assets/images/santamarta2.jpg" alt="Santa Marta 2" onerror="this.style.display='none'">
+                        <img src="assets/images/santamarta3.jpg" alt="Santa Marta 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Santa Marta</span>
                 </div>
                 <div class="card-content">
-                    <h3>Fiordo Aurora</h3>
-                    <p class="country">🇳🇴 Noruega</p>
-                    <div class="price">$675 <small>por persona</small></div>
-                    <div class="rating">★★★★☆ <span>4.5 (178)</span></div>
-                    <button class="btn-card">Ver oferta</button>
+                    <h3>Santa Marta</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 980.000 <small>por persona</small></div>
+                    <div class="rating">4.5 <span>(178 opiniones)</span></div>
+                    <button class="btn-card" data-destino="Santa Marta" data-precio="980000">Ver oferta</button>
                 </div>
             </div>
 
-            <!-- Tarjeta 4 -->
+            <!-- TARJETA 4: MADRID -->
             <div class="card">
-                <div class="card-img card-img-4">
-                    <span class="city-emoji">🌸</span>
+                <div class="card-img carousel">
+                    <div class="carousel-track">
+                        <img src="assets/images/madrid1.jpg" alt="Madrid 1" onerror="this.style.display='none'">
+                        <img src="assets/images/madrid2.jpg" alt="Madrid 2" onerror="this.style.display='none'">
+                        <img src="assets/images/madrid3.jpg" alt="Madrid 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Madrid</span>
                 </div>
                 <div class="card-content">
-                    <h3>Kioto Sakura</h3>
-                    <p class="country">🇯🇵 Japón</p>
-                    <div class="price">$829 <small>por persona</small></div>
-                    <div class="rating">★★★★★ <span>4.9 (634)</span></div>
-                    <button class="btn-card">Ver oferta</button>
+                    <h3>Madrid</h3>
+                    <p class="country">España</p>
+                    <div class="price">$ 3.200.000 <small>por persona</small></div>
+                    <div class="rating">4.9 <span>(634 opiniones)</span></div>
+                    <button class="btn-card" data-destino="Madrid" data-precio="3200000">Ver oferta</button>
+                </div>
+            </div>
+
+            <!-- TARJETA 5: MEDELLIN -->
+            <div class="card">
+                <div class="card-img carousel">
+                    <div class="carousel-track">
+                        <img src="assets\images\medellin1.jpg" alt="Medellín 1" onerror="this.style.display='none'">
+                        <img src="assets\images\medellin2.jpg" alt="Medellín 2" onerror="this.style.display='none'">
+                        <img src="assets\images\medellin3.jpg" alt="Medellín 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Medellín</span>
+                </div>
+                <div class="card-content">
+                    <h3>Medellín</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 850.000 <small>por persona</small></div>
+                    <div class="rating">4.3 <span>(310 opiniones)</span></div>
+                    <button class="btn-card" data-destino="Medellín" data-precio="850000">Ver oferta</button>
+                </div>
+            </div>
+
+            <!-- TARJETA 6: SANTIAGO -->
+            <div class="card">
+                <div class="card-img carousel">
+                    <div class="carousel-track">
+                        <img src="assets/images/santiago1.jpg" alt="Santiago 1" onerror="this.style.display='none'">
+                        <img src="assets/images/santiago2.jpg" alt="Santiago 2" onerror="this.style.display='none'">
+                        <img src="assets/images/santiago3.jpg" alt="Santiago 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Santiago</span>
+                </div>
+                <div class="card-content">
+                    <h3>Santiago</h3>
+                    <p class="country">Chile</p>
+                    <div class="price">$ 2.100.000 <small>por persona</small></div>
+                    <div class="rating">4.6 <span>(280 opiniones)</span></div>
+                    <button class="btn-card" data-destino="Santiago" data-precio="2100000">Ver oferta</button>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- ============================================
-    PIE DE PÁGINA (FOOTER)
-    ============================================ -->
+    <!-- ==========================================
+    PIE DE PAGINA
+    ========================================== -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-col">
-                <h4>✈️ SkyWing</h4>
+                <h4>SkyWing</h4>
                 <p style="max-width: 250px; line-height: 1.8;">
-                    Comparador de viajes ficticio creado para proyecto universitario. 
+                    Comparador de viajes ficticio para proyecto universitario.
                     Todos los datos son inventados.
                 </p>
             </div>
@@ -173,14 +276,17 @@
                 <h4>Legal</h4>
                 <ul>
                     <li><a href="#">Privacidad</a></li>
-                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Terminos</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2026 <strong>SkyWing</strong> — Proyecto académico, todos los derechos reservados (ficticios).
+            &copy; 2026 <strong>SkyWing</strong> — Proyecto academico, todos los derechos reservados.
         </div>
     </footer>
+
+    <!-- Contenedor para el historial -->
+    <div id="historial-container" style="max-width: 1200px; margin: 20px auto; padding: 0 5%;"></div>
 
 </body>
 </html>
