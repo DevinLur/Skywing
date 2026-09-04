@@ -117,7 +117,7 @@
     </section>
 
     <!-- ==========================================
-    DESTINOS POPULARES
+    DESTINOS POPULARES (CON CARRUSEL CORREGIDO)
     ========================================== -->
     <section class="destinations" id="seccion-destinos">
         <div class="destinations-header">
@@ -125,11 +125,12 @@
             <a href="#" id="ver-todos">Ver todos →</a>
         </div>
 
-        <div class="card-grid">
-
+        <div class="card-grid" id="card-grid-container">
+            <!-- Cada tarjeta tiene un carrusel con 3 imagenes -->
+            
             <!-- TARJETA 1: CARTAGENA -->
-            <div class="card">
-                <div class="card-img carousel">
+            <div class="card" data-destino="Cartagena" data-precio="1200000">
+                <div class="card-img carousel" data-ciudad="Cartagena">
                     <div class="carousel-track">
                         <img src="assets/images/cartagena1.jpg" alt="Cartagena 1" onerror="this.style.display='none'">
                         <img src="assets/images/cartagena2.jpg" alt="Cartagena 2" onerror="this.style.display='none'">
@@ -142,13 +143,13 @@
                     <p class="country">Colombia</p>
                     <div class="price">$ 1.200.000 <small>por persona</small></div>
                     <div class="rating">4.2 <span>(203 opiniones)</span></div>
-                    <button class="btn-card" data-destino="Cartagena" data-precio="1200000">Ver oferta</button>
+                    <button class="btn-card">Ver oferta</button>
                 </div>
             </div>
 
             <!-- TARJETA 2: MIAMI -->
-            <div class="card">
-                <div class="card-img carousel">
+            <div class="card" data-destino="Miami" data-precio="2850000">
+                <div class="card-img carousel" data-ciudad="Miami">
                     <div class="carousel-track">
                         <img src="assets/images/miami1.jpg" alt="Miami 1" onerror="this.style.display='none'">
                         <img src="assets/images/miami2.jpg" alt="Miami 2" onerror="this.style.display='none'">
@@ -161,13 +162,13 @@
                     <p class="country">Estados Unidos</p>
                     <div class="price">$ 2.850.000 <small>por persona</small></div>
                     <div class="rating">4.8 <span>(512 opiniones)</span></div>
-                    <button class="btn-card" data-destino="Miami" data-precio="2850000">Ver oferta</button>
+                    <button class="btn-card">Ver oferta</button>
                 </div>
             </div>
 
             <!-- TARJETA 3: SANTA MARTA -->
-            <div class="card">
-                <div class="card-img carousel">
+            <div class="card" data-destino="Santa Marta" data-precio="980000">
+                <div class="card-img carousel" data-ciudad="Santa Marta">
                     <div class="carousel-track">
                         <img src="assets/images/santamarta1.jpg" alt="Santa Marta 1" onerror="this.style.display='none'">
                         <img src="assets/images/santamarta2.jpg" alt="Santa Marta 2" onerror="this.style.display='none'">
@@ -180,13 +181,13 @@
                     <p class="country">Colombia</p>
                     <div class="price">$ 980.000 <small>por persona</small></div>
                     <div class="rating">4.5 <span>(178 opiniones)</span></div>
-                    <button class="btn-card" data-destino="Santa Marta" data-precio="980000">Ver oferta</button>
+                    <button class="btn-card">Ver oferta</button>
                 </div>
             </div>
 
             <!-- TARJETA 4: MADRID -->
-            <div class="card">
-                <div class="card-img carousel">
+            <div class="card" data-destino="Madrid" data-precio="3200000">
+                <div class="card-img carousel" data-ciudad="Madrid">
                     <div class="carousel-track">
                         <img src="assets/images/madrid1.jpg" alt="Madrid 1" onerror="this.style.display='none'">
                         <img src="assets/images/madrid2.jpg" alt="Madrid 2" onerror="this.style.display='none'">
@@ -199,17 +200,17 @@
                     <p class="country">España</p>
                     <div class="price">$ 3.200.000 <small>por persona</small></div>
                     <div class="rating">4.9 <span>(634 opiniones)</span></div>
-                    <button class="btn-card" data-destino="Madrid" data-precio="3200000">Ver oferta</button>
+                    <button class="btn-card">Ver oferta</button>
                 </div>
             </div>
 
             <!-- TARJETA 5: MEDELLIN -->
-            <div class="card">
-                <div class="card-img carousel">
+            <div class="card" data-destino="Medellín" data-precio="850000">
+                <div class="card-img carousel" data-ciudad="Medellín">
                     <div class="carousel-track">
-                        <img src="assets\images\medellin1.jpg" alt="Medellín 1" onerror="this.style.display='none'">
-                        <img src="assets\images\medellin2.jpg" alt="Medellín 2" onerror="this.style.display='none'">
-                        <img src="assets\images\medellin3.jpg" alt="Medellín 3" onerror="this.style.display='none'">
+                        <img src="assets/images/medellin1.jpg" alt="Medellín 1" onerror="this.style.display='none'">
+                        <img src="assets/images/medellin2.jpg" alt="Medellín 2" onerror="this.style.display='none'">
+                        <img src="assets/images/medellin3.jpg" alt="Medellín 3" onerror="this.style.display='none'">
                     </div>
                     <span class="city-label">Medellín</span>
                 </div>
@@ -218,13 +219,13 @@
                     <p class="country">Colombia</p>
                     <div class="price">$ 850.000 <small>por persona</small></div>
                     <div class="rating">4.3 <span>(310 opiniones)</span></div>
-                    <button class="btn-card" data-destino="Medellín" data-precio="850000">Ver oferta</button>
+                    <button class="btn-card">Ver oferta</button>
                 </div>
             </div>
 
             <!-- TARJETA 6: SANTIAGO -->
-            <div class="card">
-                <div class="card-img carousel">
+            <div class="card" data-destino="Santiago" data-precio="2100000">
+                <div class="card-img carousel" data-ciudad="Santiago">
                     <div class="carousel-track">
                         <img src="assets/images/santiago1.jpg" alt="Santiago 1" onerror="this.style.display='none'">
                         <img src="assets/images/santiago2.jpg" alt="Santiago 2" onerror="this.style.display='none'">
@@ -237,10 +238,9 @@
                     <p class="country">Chile</p>
                     <div class="price">$ 2.100.000 <small>por persona</small></div>
                     <div class="rating">4.6 <span>(280 opiniones)</span></div>
-                    <button class="btn-card" data-destino="Santiago" data-precio="2100000">Ver oferta</button>
+                    <button class="btn-card">Ver oferta</button>
                 </div>
             </div>
-
         </div>
     </section>
 

@@ -1,22 +1,31 @@
 /* ========================================
-   1. VARIABLES CSS
+   VARIABLES CSS (colores sobrios y equilibrados)
    ======================================== */
 :root {
-    --black: #f3f3fa;
-    --dark-gray: #f0f0f6;
+    --black: #0d0d14;
+    --dark-gray: #1a1a24;
+    --medium-gray: #2d2d3a;
+    --soft-gray: #4a4a5a;
+    --light-gray: #6b6b7a;
     --navy: #1b2a47;
+    --navy-light: #2a3d60;
     --accent: #b86b3a;
-    --text-dark: #1e1e24;
-    --text-gray: #5a5a66;
-    --bg-light: #e8eaed;
-    --white: #fafbfc;
-    --shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    --accent-hover: #9e5a2e;
+    --text-light: #e8eaed;
+    --text-muted: #a0a5b0;
+    --text-dark: #d0d4d8;
+    --bg-main: #12121a;
+    --bg-card: #1e1e28;
+    --bg-input: #2a2a35;
+    --border-color: #3a3a48;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 20px 35px rgba(0, 0, 0, 0.4);
     --border-radius: 12px;
     --transition: all 0.3s ease;
 }
 
 /* ========================================
-   2. RESET Y ESTILOS BASE
+   RESET Y ESTILOS BASE
    ======================================== */
 * {
     margin: 0;
@@ -26,8 +35,8 @@
 
 body {
     font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-    background-color: var(--bg-light);
-    color: var(--text-dark);
+    background-color: var(--bg-main);
+    color: var(--text-light);
     line-height: 1.6;
 }
 
@@ -37,7 +46,7 @@ a {
 }
 
 /* ========================================
-   3. BARRA DE NAVEGACION
+   BARRA DE NAVEGACION
    ======================================== */
 .navbar {
     background: var(--black);
@@ -46,16 +55,17 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
     position: sticky;
     top: 0;
     z-index: 100;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .logo {
     font-size: 1.8rem;
     font-weight: 800;
-    color: var(--white);
+    color: var(--text-light);
 }
 .logo span {
     color: var(--accent);
@@ -69,32 +79,33 @@ a {
 }
 
 .nav-links li a {
-    padding: 8px 12px;
+    padding: 8px 16px;
     border-radius: 30px;
     transition: var(--transition);
-    color: #aab;
+    color: var(--text-muted);
 }
 
 .nav-links li a:hover {
-    background-color: #2a2a35;
-    color: var(--white);
+    background-color: var(--medium-gray);
+    color: var(--text-light);
 }
 
 .nav-links .active {
-    color: var(--white);
+    color: var(--text-light);
     background-color: var(--navy);
 }
 
 /* ========================================
-   4. SECCION BUSCADOR
+   SECCION HEROE (BUSCADOR)
    ======================================== */
 .hero {
     background: var(--navy);
     padding: 60px 5% 80px;
     text-align: center;
-    color: var(--white);
+    color: var(--text-light);
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
     margin-bottom: 40px;
+    border-bottom: 1px solid var(--navy-light);
 }
 
 .hero h1 {
@@ -115,18 +126,17 @@ a {
     display: flex;
     justify-content: center;
     gap: 5px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 50px;
     padding: 6px;
     max-width: 400px;
     margin: 0 auto 30px;
-    backdrop-filter: blur(4px);
 }
 
 .tab-btn {
     background: transparent;
     border: none;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--text-muted);
     padding: 10px 28px;
     border-radius: 40px;
     font-weight: 600;
@@ -136,18 +146,18 @@ a {
 }
 
 .tab-btn.active {
-    background: var(--white);
-    color: var(--navy);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    background: var(--bg-card);
+    color: var(--text-light);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .tab-btn:hover:not(.active) {
-    color: white;
+    color: var(--text-light);
 }
 
-/* Caja del formulario */
+/* Formulario de búsqueda */
 .search-box {
-    background: var(--white);
+    background: var(--bg-card);
     border-radius: 60px;
     padding: 10px 10px 10px 25px;
     display: flex;
@@ -156,7 +166,8 @@ a {
     gap: 10px;
     max-width: 900px;
     margin: 0 auto;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-color);
 }
 
 .search-box .field {
@@ -171,7 +182,7 @@ a {
     font-size: 0.65rem;
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--text-gray);
+    color: var(--text-muted);
     letter-spacing: 0.5px;
 }
 
@@ -181,7 +192,7 @@ a {
     padding: 8px 0;
     width: 100%;
     font-size: 1rem;
-    color: var(--text-dark);
+    color: var(--text-light);
     background: transparent;
     outline: none;
     font-weight: 500;
@@ -190,39 +201,39 @@ a {
 }
 
 .search-box .field select option {
-    background: white;
-    color: var(--text-dark);
+    background: var(--bg-card);
+    color: var(--text-light);
 }
 
 .search-btn {
     background: var(--accent);
     border: none;
-    color: var(--white);
+    color: var(--text-light);
     padding: 14px 40px;
     border-radius: 50px;
     font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
     transition: var(--transition);
-    box-shadow: 0 8px 20px rgba(184, 107, 58, 0.3);
+    box-shadow: 0 8px 20px rgba(184, 107, 58, 0.25);
     flex: 0 0 auto;
 }
 
 .search-btn:hover {
     transform: scale(1.03);
-    background: #9e5a2e;
-    box-shadow: 0 12px 25px rgba(184, 107, 58, 0.4);
+    background: var(--accent-hover);
+    box-shadow: 0 12px 25px rgba(184, 107, 58, 0.35);
 }
 
 .field-divider {
     width: 1px;
     height: 40px;
-    background: #ccc;
+    background: var(--border-color);
     flex-shrink: 0;
 }
 
 /* ========================================
-   5. SECCION LOGIN
+   SECCION LOGIN
    ======================================== */
 .login-section {
     padding: 40px 5%;
@@ -231,16 +242,16 @@ a {
 }
 
 .login-container {
-    background: var(--white);
+    background: var(--bg-card);
     padding: 40px 30px;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
-    border: 1px solid #d0d4d8;
+    border: 1px solid var(--border-color);
 }
 
 .login-container h2 {
     text-align: center;
-    color: var(--black);
+    color: var(--text-light);
     margin-bottom: 25px;
 }
 
@@ -252,35 +263,41 @@ a {
     display: block;
     font-weight: 600;
     margin-bottom: 5px;
-    color: var(--text-dark);
+    color: var(--text-muted);
 }
 
 .login-field input {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid #d0d7dd;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     font-size: 1rem;
-    background: #f8fafc;
+    background: var(--bg-input);
+    color: var(--text-light);
     transition: var(--transition);
 }
 
 .login-field input:focus {
-    border-color: var(--navy);
+    border-color: var(--accent);
     outline: none;
-    background: white;
+    background: var(--dark-gray);
+    box-shadow: 0 0 0 3px rgba(184, 107, 58, 0.15);
+}
+
+.login-field input::placeholder {
+    color: var(--light-gray);
 }
 
 .login-field small {
-    color: var(--text-gray);
+    color: var(--text-muted);
     font-size: 0.8rem;
 }
 
 .login-btn {
     width: 100%;
     padding: 14px;
-    background: var(--black);
-    color: white;
+    background: var(--navy);
+    color: var(--text-light);
     border: none;
     border-radius: 8px;
     font-weight: 700;
@@ -290,7 +307,13 @@ a {
 }
 
 .login-btn:hover {
-    background: #2a2a35;
+    background: var(--navy-light);
+}
+
+.login-btn:disabled {
+    background: var(--medium-gray);
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 .login-msg {
@@ -301,7 +324,7 @@ a {
 }
 
 /* ========================================
-   6. DESTINOS POPULARES
+   DESTINOS POPULARES (CON CARRUSEL)
    ======================================== */
 .destinations {
     padding: 20px 5% 60px;
@@ -320,21 +343,23 @@ a {
 .destinations-header h2 {
     font-size: 2rem;
     font-weight: 700;
+    color: var(--text-light);
 }
 
 .destinations-header h2 span {
-    color: var(--navy);
+    color: var(--accent);
 }
 
 .destinations-header a {
-    color: var(--navy);
+    color: var(--text-muted);
     font-weight: 600;
     border-bottom: 2px solid transparent;
     transition: var(--transition);
 }
 
 .destinations-header a:hover {
-    border-bottom-color: var(--navy);
+    color: var(--text-light);
+    border-bottom-color: var(--accent);
 }
 
 .card-grid {
@@ -344,21 +369,22 @@ a {
 }
 
 .card {
-    background: var(--white);
+    background: var(--bg-card);
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
     cursor: default;
-    border: 1px solid #e0e3e7;
+    border: 1px solid var(--border-color);
 }
 
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--medium-gray);
 }
 
-/* ---- ESTILOS DEL CARRUSEL  ---- */
+/* ---- CARRUSEL (3 IMAGENES) ---- */
 .card-img.carousel {
     height: 180px;
     background: var(--dark-gray);
@@ -368,37 +394,35 @@ a {
 
 .carousel-track {
     display: flex;
-    width: 300%; /* 3 imagenes ocupan el 300% del ancho */
+    width: 300%;
     height: 100%;
     transition: transform 0.6s ease-in-out;
 }
 
 .carousel-track img {
-    width: 33.333%; /* Cada imagen ocupa un tercio del track */
+    width: 33.333%;
     height: 100%;
     object-fit: cover;
     flex-shrink: 0;
     display: block;
 }
 
-/* Etiqueta de la ciudad (flota sobre el carrusel) */
 .city-label {
     position: absolute;
     bottom: 10px;
     right: 15px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
+    background: rgba(0, 0, 0, 0.75);
+    color: var(--text-light);
     padding: 4px 14px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.5px;
     z-index: 2;
-    pointer-events: none; /* Evita que bloquee el hover del mouse */
+    pointer-events: none;
 }
 
-/* ------------------------------------------- */
-
+/* ---- CONTENIDO DE LA TARJETA ---- */
 .card-content {
     padding: 20px 22px 25px;
 }
@@ -406,10 +430,11 @@ a {
 .card-content h3 {
     font-size: 1.3rem;
     margin-bottom: 4px;
+    color: var(--text-light);
 }
 
 .card-content .country {
-    color: var(--text-gray);
+    color: var(--text-muted);
     font-size: 0.9rem;
     margin-bottom: 12px;
 }
@@ -417,13 +442,13 @@ a {
 .card-content .price {
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--navy);
+    color: var(--accent);
 }
 
 .card-content .price small {
     font-size: 0.8rem;
     font-weight: 400;
-    color: var(--text-gray);
+    color: var(--text-muted);
 }
 
 .card-content .rating {
@@ -436,7 +461,7 @@ a {
 }
 
 .card-content .rating span {
-    color: var(--text-gray);
+    color: var(--text-muted);
     font-weight: 400;
     font-size: 0.9rem;
 }
@@ -445,8 +470,8 @@ a {
     display: inline-block;
     margin-top: 15px;
     background: transparent;
-    border: 2px solid var(--navy);
-    color: var(--navy);
+    border: 2px solid var(--navy-light);
+    color: var(--text-light);
     padding: 8px 25px;
     border-radius: 40px;
     font-weight: 600;
@@ -456,18 +481,78 @@ a {
 
 .card .btn-card:hover {
     background: var(--navy);
-    color: white;
+    border-color: var(--navy);
+    color: var(--text-light);
 }
 
 /* ========================================
-   7. PIE DE PAGINA
+   FILTRO DE DESTINOS
+   ======================================== */
+.card.oculto {
+    display: none !important;
+}
+
+.sin-resultados {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    border: 1px solid var(--border-color);
+}
+
+/* ========================================
+   HISTORIAL DE BUSQUEDAS
+   ======================================== */
+#historial-container {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    padding: 20px 25px 25px;
+    border: 1px solid var(--border-color);
+    margin: 20px auto !important;
+}
+
+#historial-container h3 {
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+#historial-container ul li {
+    background: var(--bg-input) !important;
+    border-left: 4px solid var(--accent) !important;
+    color: var(--text-light);
+}
+
+#historial-container ul li strong {
+    color: var(--text-light);
+}
+
+#historial-container ul li small {
+    color: var(--text-muted) !important;
+}
+
+#historial-container button {
+    background: var(--medium-gray) !important;
+    color: var(--text-light) !important;
+    border: 1px solid var(--border-color) !important;
+    transition: var(--transition);
+}
+
+#historial-container button:hover {
+    background: var(--light-gray) !important;
+}
+
+/* ========================================
+   PIE DE PAGINA
    ======================================== */
 .footer {
     background: var(--black);
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-muted);
     padding: 40px 5% 20px;
     margin-top: 40px;
-    border-top: 1px solid #2a2a35;
+    border-top: 1px solid var(--border-color);
 }
 
 .footer-content {
@@ -480,7 +565,7 @@ a {
 }
 
 .footer-col h4 {
-    color: white;
+    color: var(--text-light);
     margin-bottom: 15px;
     font-size: 1.1rem;
 }
@@ -498,12 +583,12 @@ a {
 }
 
 .footer-col ul li a:hover {
-    color: white;
+    color: var(--text-light);
 }
 
 .footer-bottom {
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid var(--border-color);
     padding-top: 25px;
     margin-top: 30px;
     font-size: 0.9rem;
@@ -513,11 +598,21 @@ a {
 }
 
 .footer-bottom strong {
-    color: white;
+    color: var(--text-light);
 }
 
 /* ========================================
-   8. RESPONSIVE
+   MENSAJES FLOTANTES
+   ======================================== */
+.mensaje-flotante {
+    background: var(--navy) !important;
+    color: var(--text-light) !important;
+    border: 1px solid var(--navy-light);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ========================================
+   RESPONSIVE
    ======================================== */
 @media (max-width: 768px) {
     .navbar {
@@ -557,13 +652,12 @@ a {
         padding: 20px;
         flex-direction: column;
         align-items: stretch;
-        background: white;
     }
 
     .search-box .field {
         flex: 1 1 auto;
         width: 100%;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid var(--border-color);
         padding: 5px 0;
     }
 
