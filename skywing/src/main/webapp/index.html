@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyWing - Buscador de Viajes</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+
+    <!-- ==========================================
+    BARRA DE NAVEGACION
+    ========================================== -->
+    <header>
+        <nav class="navbar">
+            <div class="logo" id="logo-inicio">Sky<span>Wing</span></div>
+            <ul class="nav-links">
+                <li><a href="#" class="active" id="tab-vuelos">Vuelos</a></li>
+                <li><a href="#" id="tab-hoteles">Hoteles</a></li>
+                <li><a href="#" id="tab-coches">Coches</a></li>
+                <li><a href="#" id="tab-login">Iniciar Sesion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ==========================================
+    SECCION BUSCADOR
+    ========================================== -->
+    <section class="hero" id="seccion-buscador">
+        <h1>Encuentra tu proximo destino</h1>
+        <p>Compara precios en cientos de aerolineas al instante.</p>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="vuelos">Vuelos</button>
+            <button class="tab-btn" data-tab="hoteles">Hoteles</button>
+            <button class="tab-btn" data-tab="coches">Coches</button>
+        </div>
+
+        <form class="search-box" id="form-busqueda">
+            <div class="field">
+                <label for="origin">Origen</label>
+                <select id="origin" name="origin">
+                    <option value="">-- Selecciona --</option>
+                    <option value="Bogotá">Bogotá (COL)</option>
+                    <option value="Medellín">Medellín (COL)</option>
+                    <option value="Cali">Cali (COL)</option>
+                    <option value="Cartagena">Cartagena (COL)</option>
+                    <option value="Santa Marta">Santa Marta (COL)</option>
+                    <option value="Barranquilla">Barranquilla (COL)</option>
+                    <option value="Bucaramanga">Bucaramanga (COL)</option>
+                    <option value="Pereira">Pereira (COL)</option>
+                    <option value="Manizales">Manizales (COL)</option>
+                    <option value="Cúcuta">Cúcuta (COL)</option>
+                    <option value="Ibagué">Ibagué (COL)</option>
+                    <option value="Villavicencio">Villavicencio (COL)</option>
+                    <option value="Pasto">Pasto (COL)</option>
+                    <option value="San Andrés">San Andrés (COL)</option>
+                    <option value="Leticia">Leticia (COL)</option>
+                    <option value="Miami">Miami (USA)</option>
+                    <option value="Nueva York">Nueva York (USA)</option>
+                    <option value="Toronto">Toronto (CAN)</option>
+                    <option value="Ciudad de México">Ciudad de México (MEX)</option>
+                    <option value="Cancún">Cancún (MEX)</option>
+                    <option value="Buenos Aires">Buenos Aires (ARG)</option>
+                    <option value="Lima">Lima (PER)</option>
+                    <option value="Santiago">Santiago (CHI)</option>
+                    <option value="Río de Janeiro">Río de Janeiro (BRA)</option>
+                    <option value="Madrid">Madrid (ESP)</option>
+                    <option value="Barcelona">Barcelona (ESP)</option>
+                    <option value="París">París (FRA)</option>
+                    <option value="Londres">Londres (GBR)</option>
+                    <option value="Roma">Roma (ITA)</option>
+                    <option value="Berlín">Berlín (ALE)</option>
+                    <option value="Ámsterdam">Ámsterdam (HOL)</option>
+                    <option value="Lisboa">Lisboa (POR)</option>
+                    <option value="Dubái">Dubái (EAU)</option>
+                    <option value="Tokio">Tokio (JPN)</option>
+                    <option value="Sídney">Sídney (AUS)</option>
+                    <option value="Punta Cana">Punta Cana (REP)</option>
+                </select>
+            </div>
+
+            <div class="field-divider"></div>
+
+            <div class="field">
+                <label for="dest">Destino</label>
+                <select id="dest" name="dest">
+                    <option value="">-- Selecciona --</option>
+                    <option value="Bogotá">Bogotá (COL)</option>
+                    <option value="Medellín">Medellín (COL)</option>
+                    <option value="Cali">Cali (COL)</option>
+                    <option value="Cartagena">Cartagena (COL)</option>
+                    <option value="Santa Marta">Santa Marta (COL)</option>
+                    <option value="Barranquilla">Barranquilla (COL)</option>
+                    <option value="Bucaramanga">Bucaramanga (COL)</option>
+                    <option value="Pereira">Pereira (COL)</option>
+                    <option value="Manizales">Manizales (COL)</option>
+                    <option value="Cúcuta">Cúcuta (COL)</option>
+                    <option value="Ibagué">Ibagué (COL)</option>
+                    <option value="Villavicencio">Villavicencio (COL)</option>
+                    <option value="Pasto">Pasto (COL)</option>
+                    <option value="San Andrés">San Andrés (COL)</option>
+                    <option value="Leticia">Leticia (COL)</option>
+                    <option value="Miami">Miami (USA)</option>
+                    <option value="Nueva York">Nueva York (USA)</option>
+                    <option value="Toronto">Toronto (CAN)</option>
+                    <option value="Ciudad de México">Ciudad de México (MEX)</option>
+                    <option value="Cancún">Cancún (MEX)</option>
+                    <option value="Buenos Aires">Buenos Aires (ARG)</option>
+                    <option value="Lima">Lima (PER)</option>
+                    <option value="Santiago">Santiago (CHI)</option>
+                    <option value="Río de Janeiro">Río de Janeiro (BRA)</option>
+                    <option value="Madrid">Madrid (ESP)</option>
+                    <option value="Barcelona">Barcelona (ESP)</option>
+                    <option value="París">París (FRA)</option>
+                    <option value="Londres">Londres (GBR)</option>
+                    <option value="Roma">Roma (ITA)</option>
+                    <option value="Berlín">Berlín (ALE)</option>
+                    <option value="Ámsterdam">Ámsterdam (HOL)</option>
+                    <option value="Lisboa">Lisboa (POR)</option>
+                    <option value="Dubái">Dubái (EAU)</option>
+                    <option value="Tokio">Tokio (JPN)</option>
+                    <option value="Sídney">Sídney (AUS)</option>
+                    <option value="Punta Cana">Punta Cana (REP)</option>
+                </select>
+            </div>
+
+            <div class="field-divider"></div>
+
+            <div class="field">
+                <label for="date">Fecha</label>
+                <input type="date" id="date" name="date">
+            </div>
+
+            <button type="submit" class="search-btn">Buscar</button>
+        </form>
+    </section>
+
+    <!-- ==========================================
+    SECCION LOGIN Y REGISTRO
+    ========================================== -->
+    <section class="login-section" id="seccion-login" style="display: none;">
+        <div class="seccion-volver">
+            <button class="btn-volver" onclick="volverInicio()">← Volver al inicio</button>
+        </div>
+        <div class="login-container">
+            <h2 id="login-titulo">Iniciar sesion</h2>
+
+            <form id="form-login" onsubmit="return loginUsuario();">
+                <div class="login-field">
+                    <label for="email">Correo electronico</label>
+                    <input type="email" id="email" placeholder="ejemplo@dominio.com" list="sugerencias-email" required>
+                    <datalist id="sugerencias-email">
+                        <option value="@gmail.com">
+                        <option value="@hotmail.com">
+                        <option value="@outlook.com">
+                        <option value="@yahoo.com">
+                        <option value="@universidad.edu.co">
+                    </datalist>
+                </div>
+                <div class="login-field">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" placeholder="Minimo 4 caracteres" required>
+                </div>
+                <button type="submit" class="login-btn" id="btn-login-accion">Ingresar</button>
+                <p class="login-msg" id="login-mensaje"></p>
+            </form>
+
+            <p class="login-switch">
+                <a href="#" id="switch-registro">Crear cuenta nueva</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    SECCION HOTELES
+    ========================================== -->
+    <section class="hoteles-section" id="seccion-hoteles" style="display: none;">
+        <div class="seccion-volver">
+            <button class="btn-volver" onclick="volverInicio()">← Volver al inicio</button>
+        </div>
+        <div class="hoteles-header">
+            <h2>Hoteles <span>disponibles</span></h2>
+            <select id="filtro-hotel-destino">
+                <option value="">-- Selecciona un destino --</option>
+            </select>
+        </div>
+        <div class="hoteles-grid" id="hoteles-grid"></div>
+    </section>
+
+    <!-- ==========================================
+    SECCION COCHES
+    ========================================== -->
+    <section class="coches-section" id="seccion-coches" style="display: none;">
+        <div class="seccion-volver">
+            <button class="btn-volver" onclick="volverInicio()">← Volver al inicio</button>
+        </div>
+        <div class="coches-header">
+            <h2>Coches <span>en alquiler</span></h2>
+            <select id="filtro-coche-destino">
+                <option value="">-- Selecciona un destino --</option>
+            </select>
+        </div>
+        <div class="coches-grid" id="coches-grid"></div>
+    </section>
+
+    <!-- ==========================================
+    DESTINOS POPULARES CON CARRUSEL
+    ========================================== -->
+    <section class="destinations" id="seccion-destinos">
+        <div class="destinations-header">
+            <h2>Destinos <span>populares</span></h2>
+            <a href="#" id="ver-todos">Ver todos →</a>
+        </div>
+
+        <div class="card-grid" id="card-grid-container">
+
+            <div class="card" data-destino="Cartagena" data-precio="1200000">
+                <div class="card-img carousel" data-ciudad="Cartagena">
+                    <div class="carousel-track">
+                        <img src="assets/images/cartagena1.jpg" alt="Cartagena 1" onerror="this.style.display='none'">
+                        <img src="assets/images/cartagena2.jpg" alt="Cartagena 2" onerror="this.style.display='none'">
+                        <img src="assets/images/cartagena3.jpg" alt="Cartagena 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Cartagena</span>
+                </div>
+                <div class="card-content">
+                    <h3>Cartagena</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 1.200.000 <small>por persona</small></div>
+                    <div class="rating">4.2 <span>(203 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Miami" data-precio="2850000">
+                <div class="card-img carousel" data-ciudad="Miami">
+                    <div class="carousel-track">
+                        <img src="assets/images/miami1.jpg" alt="Miami 1" onerror="this.style.display='none'">
+                        <img src="assets/images/miami2.jpg" alt="Miami 2" onerror="this.style.display='none'">
+                        <img src="assets/images/miami3.jpg" alt="Miami 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Miami</span>
+                </div>
+                <div class="card-content">
+                    <h3>Miami</h3>
+                    <p class="country">Estados Unidos</p>
+                    <div class="price">$ 2.850.000 <small>por persona</small></div>
+                    <div class="rating">4.8 <span>(512 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Santa Marta" data-precio="980000">
+                <div class="card-img carousel" data-ciudad="Santa Marta">
+                    <div class="carousel-track">
+                        <img src="assets/images/santamarta1.jpg" alt="Santa Marta 1" onerror="this.style.display='none'">
+                        <img src="assets/images/santamarta2.jpg" alt="Santa Marta 2" onerror="this.style.display='none'">
+                        <img src="assets/images/santamarta3.jpg" alt="Santa Marta 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Santa Marta</span>
+                </div>
+                <div class="card-content">
+                    <h3>Santa Marta</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 980.000 <small>por persona</small></div>
+                    <div class="rating">4.5 <span>(178 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Madrid" data-precio="3200000">
+                <div class="card-img carousel" data-ciudad="Madrid">
+                    <div class="carousel-track">
+                        <img src="assets/images/madrid1.jpg" alt="Madrid 1" onerror="this.style.display='none'">
+                        <img src="assets/images/madrid2.jpg" alt="Madrid 2" onerror="this.style.display='none'">
+                        <img src="assets/images/madrid3.jpg" alt="Madrid 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Madrid</span>
+                </div>
+                <div class="card-content">
+                    <h3>Madrid</h3>
+                    <p class="country">España</p>
+                    <div class="price">$ 3.200.000 <small>por persona</small></div>
+                    <div class="rating">4.9 <span>(634 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Medellín" data-precio="850000">
+                <div class="card-img carousel" data-ciudad="Medellín">
+                    <div class="carousel-track">
+                        <img src="assets/images/medellin1.jpg" alt="Medellín 1" onerror="this.style.display='none'">
+                        <img src="assets/images/medellin2.jpg" alt="Medellín 2" onerror="this.style.display='none'">
+                        <img src="assets/images/medellin3.jpg" alt="Medellín 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Medellín</span>
+                </div>
+                <div class="card-content">
+                    <h3>Medellín</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 850.000 <small>por persona</small></div>
+                    <div class="rating">4.3 <span>(310 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Santiago" data-precio="2100000">
+                <div class="card-img carousel" data-ciudad="Santiago">
+                    <div class="carousel-track">
+                        <img src="assets/images/santiago1.jpg" alt="Santiago 1" onerror="this.style.display='none'">
+                        <img src="assets/images/santiago2.jpg" alt="Santiago 2" onerror="this.style.display='none'">
+                        <img src="assets/images/santiago3.jpg" alt="Santiago 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Santiago</span>
+                </div>
+                <div class="card-content">
+                    <h3>Santiago</h3>
+                    <p class="country">Chile</p>
+                    <div class="price">$ 2.100.000 <small>por persona</small></div>
+                    <div class="rating">4.6 <span>(280 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Bogotá" data-precio="400000">
+                <div class="card-img carousel" data-ciudad="Bogotá">
+                    <div class="carousel-track">
+                        <img src="assets/images/bogota1.jpg" alt="Bogotá 1" onerror="this.style.display='none'">
+                        <img src="assets/images/bogota2.jpg" alt="Bogotá 2" onerror="this.style.display='none'">
+                        <img src="assets/images/bogota3.jpg" alt="Bogotá 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Bogotá</span>
+                </div>
+                <div class="card-content">
+                    <h3>Bogotá</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 400.000 <small>por persona</small></div>
+                    <div class="rating">4.0 <span>(150 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Cali" data-precio="380000">
+                <div class="card-img carousel" data-ciudad="Cali">
+                    <div class="carousel-track">
+                        <img src="assets/images/cali1.jpg" alt="Cali 1" onerror="this.style.display='none'">
+                        <img src="assets/images/cali2.jpg" alt="Cali 2" onerror="this.style.display='none'">
+                        <img src="assets/images/cali3.jpg" alt="Cali 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Cali</span>
+                </div>
+                <div class="card-content">
+                    <h3>Cali</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 380.000 <small>por persona</small></div>
+                    <div class="rating">4.1 <span>(120 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Barranquilla" data-precio="620000">
+                <div class="card-img carousel" data-ciudad="Barranquilla">
+                    <div class="carousel-track">
+                        <img src="assets/images/barranquilla1.jpg" alt="Barranquilla 1" onerror="this.style.display='none'">
+                        <img src="assets/images/barranquilla2.jpg" alt="Barranquilla 2" onerror="this.style.display='none'">
+                        <img src="assets/images/barranquilla3.jpg" alt="Barranquilla 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Barranquilla</span>
+                </div>
+                <div class="card-content">
+                    <h3>Barranquilla</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 620.000 <small>por persona</small></div>
+                    <div class="rating">4.2 <span>(190 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Bucaramanga" data-precio="550000">
+                <div class="card-img carousel" data-ciudad="Bucaramanga">
+                    <div class="carousel-track">
+                        <img src="assets/images/bucaramanga1.jpg" alt="Bucaramanga 1" onerror="this.style.display='none'">
+                        <img src="assets/images/bucaramanga2.jpg" alt="Bucaramanga 2" onerror="this.style.display='none'">
+                        <img src="assets/images/bucaramanga3.jpg" alt="Bucaramanga 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Bucaramanga</span>
+                </div>
+                <div class="card-content">
+                    <h3>Bucaramanga</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 550.000 <small>por persona</small></div>
+                    <div class="rating">4.1 <span>(110 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Pereira" data-precio="450000">
+                <div class="card-img carousel" data-ciudad="Pereira">
+                    <div class="carousel-track">
+                        <img src="assets/images/pereira1.jpg" alt="Pereira 1" onerror="this.style.display='none'">
+                        <img src="assets/images/pereira2.jpg" alt="Pereira 2" onerror="this.style.display='none'">
+                        <img src="assets/images/pereira3.jpg" alt="Pereira 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Pereira</span>
+                </div>
+                <div class="card-content">
+                    <h3>Pereira</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 450.000 <small>por persona</small></div>
+                    <div class="rating">4.2 <span>(95 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Manizales" data-precio="470000">
+                <div class="card-img carousel" data-ciudad="Manizales">
+                    <div class="carousel-track">
+                        <img src="assets/images/manizales1.jpg" alt="Manizales 1" onerror="this.style.display='none'">
+                        <img src="assets/images/manizales2.jpg" alt="Manizales 2" onerror="this.style.display='none'">
+                        <img src="assets/images/manizales3.jpg" alt="Manizales 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Manizales</span>
+                </div>
+                <div class="card-content">
+                    <h3>Manizales</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 470.000 <small>por persona</small></div>
+                    <div class="rating">4.3 <span>(88 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Cúcuta" data-precio="590000">
+                <div class="card-img carousel" data-ciudad="Cúcuta">
+                    <div class="carousel-track">
+                        <img src="assets/images/cucuta1.jpg" alt="Cúcuta 1" onerror="this.style.display='none'">
+                        <img src="assets/images/cucuta2.jpg" alt="Cúcuta 2" onerror="this.style.display='none'">
+                        <img src="assets/images/cucuta3.jpg" alt="Cúcuta 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Cúcuta</span>
+                </div>
+                <div class="card-content">
+                    <h3>Cúcuta</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 590.000 <small>por persona</small></div>
+                    <div class="rating">4.0 <span>(76 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Ibagué" data-precio="420000">
+                <div class="card-img carousel" data-ciudad="Ibagué">
+                    <div class="carousel-track">
+                        <img src="assets/images/ibague1.jpg" alt="Ibagué 1" onerror="this.style.display='none'">
+                        <img src="assets/images/ibague2.jpg" alt="Ibagué 2" onerror="this.style.display='none'">
+                        <img src="assets/images/ibague3.jpg" alt="Ibagué 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Ibagué</span>
+                </div>
+                <div class="card-content">
+                    <h3>Ibagué</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 420.000 <small>por persona</small></div>
+                    <div class="rating">4.1 <span>(64 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Villavicencio" data-precio="400000">
+                <div class="card-img carousel" data-ciudad="Villavicencio">
+                    <div class="carousel-track">
+                        <img src="assets/images/villavicencio1.jpg" alt="Villavicencio 1" onerror="this.style.display='none'">
+                        <img src="assets/images/villavicencio2.jpg" alt="Villavicencio 2" onerror="this.style.display='none'">
+                        <img src="assets/images/villavicencio3.jpg" alt="Villavicencio 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Villavicencio</span>
+                </div>
+                <div class="card-content">
+                    <h3>Villavicencio</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 400.000 <small>por persona</small></div>
+                    <div class="rating">4.0 <span>(72 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Pasto" data-precio="560000">
+                <div class="card-img carousel" data-ciudad="Pasto">
+                    <div class="carousel-track">
+                        <img src="assets/images/pasto1.jpg" alt="Pasto 1" onerror="this.style.display='none'">
+                        <img src="assets/images/pasto2.jpg" alt="Pasto 2" onerror="this.style.display='none'">
+                        <img src="assets/images/pasto3.jpg" alt="Pasto 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Pasto</span>
+                </div>
+                <div class="card-content">
+                    <h3>Pasto</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 560.000 <small>por persona</small></div>
+                    <div class="rating">4.1 <span>(58 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="San Andrés" data-precio="1100000">
+                <div class="card-img carousel" data-ciudad="San Andrés">
+                    <div class="carousel-track">
+                        <img src="assets/images/sanandres1.jpg" alt="San Andrés 1" onerror="this.style.display='none'">
+                        <img src="assets/images/sanandres2.jpg" alt="San Andrés 2" onerror="this.style.display='none'">
+                        <img src="assets/images/sanandres3.jpg" alt="San Andrés 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">San Andrés</span>
+                </div>
+                <div class="card-content">
+                    <h3>San Andrés</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 1.100.000 <small>por persona</small></div>
+                    <div class="rating">4.7 <span>(410 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Leticia" data-precio="980000">
+                <div class="card-img carousel" data-ciudad="Leticia">
+                    <div class="carousel-track">
+                        <img src="assets/images/leticia1.jpg" alt="Leticia 1" onerror="this.style.display='none'">
+                        <img src="assets/images/leticia2.jpg" alt="Leticia 2" onerror="this.style.display='none'">
+                        <img src="assets/images/leticia3.jpg" alt="Leticia 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Leticia</span>
+                </div>
+                <div class="card-content">
+                    <h3>Leticia</h3>
+                    <p class="country">Colombia</p>
+                    <div class="price">$ 980.000 <small>por persona</small></div>
+                    <div class="rating">4.4 <span>(120 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Nueva York" data-precio="3400000">
+                <div class="card-img carousel" data-ciudad="Nueva York">
+                    <div class="carousel-track">
+                        <img src="assets/images/ny1.jpg" alt="Nueva York 1" onerror="this.style.display='none'">
+                        <img src="assets/images/ny2.jpg" alt="Nueva York 2" onerror="this.style.display='none'">
+                        <img src="assets/images/ny3.jpg" alt="Nueva York 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Nueva York</span>
+                </div>
+                <div class="card-content">
+                    <h3>Nueva York</h3>
+                    <p class="country">Estados Unidos</p>
+                    <div class="price">$ 3.400.000 <small>por persona</small></div>
+                    <div class="rating">4.9 <span>(890 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Toronto" data-precio="3100000">
+                <div class="card-img carousel" data-ciudad="Toronto">
+                    <div class="carousel-track">
+                        <img src="assets/images/toronto1.jpg" alt="Toronto 1" onerror="this.style.display='none'">
+                        <img src="assets/images/toronto2.jpg" alt="Toronto 2" onerror="this.style.display='none'">
+                        <img src="assets/images/toronto3.jpg" alt="Toronto 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Toronto</span>
+                </div>
+                <div class="card-content">
+                    <h3>Toronto</h3>
+                    <p class="country">Canadá</p>
+                    <div class="price">$ 3.100.000 <small>por persona</small></div>
+                    <div class="rating">4.7 <span>(420 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Ciudad de México" data-precio="1500000">
+                <div class="card-img carousel" data-ciudad="Ciudad de México">
+                    <div class="carousel-track">
+                        <img src="assets/images/mex1.jpg" alt="Ciudad de México 1" onerror="this.style.display='none'">
+                        <img src="assets/images/mex2.jpg" alt="Ciudad de México 2" onerror="this.style.display='none'">
+                        <img src="assets/images/mex3.jpg" alt="Ciudad de México 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Ciudad de México</span>
+                </div>
+                <div class="card-content">
+                    <h3>Ciudad de México</h3>
+                    <p class="country">México</p>
+                    <div class="price">$ 1.500.000 <small>por persona</small></div>
+                    <div class="rating">4.6 <span>(520 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Cancún" data-precio="1900000">
+                <div class="card-img carousel" data-ciudad="Cancún">
+                    <div class="carousel-track">
+                        <img src="assets/images/cancun1.jpg" alt="Cancún 1" onerror="this.style.display='none'">
+                        <img src="assets/images/cancun2.jpg" alt="Cancún 2" onerror="this.style.display='none'">
+                        <img src="assets/images/cancun3.jpg" alt="Cancún 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Cancún</span>
+                </div>
+                <div class="card-content">
+                    <h3>Cancún</h3>
+                    <p class="country">México</p>
+                    <div class="price">$ 1.900.000 <small>por persona</small></div>
+                    <div class="rating">4.8 <span>(730 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Buenos Aires" data-precio="2200000">
+                <div class="card-img carousel" data-ciudad="Buenos Aires">
+                    <div class="carousel-track">
+                        <img src="assets/images/buenosaires1.jpg" alt="Buenos Aires 1" onerror="this.style.display='none'">
+                        <img src="assets/images/buenosaires2.jpg" alt="Buenos Aires 2" onerror="this.style.display='none'">
+                        <img src="assets/images/buenosaires3.jpg" alt="Buenos Aires 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Buenos Aires</span>
+                </div>
+                <div class="card-content">
+                    <h3>Buenos Aires</h3>
+                    <p class="country">Argentina</p>
+                    <div class="price">$ 2.200.000 <small>por persona</small></div>
+                    <div class="rating">4.7 <span>(440 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Lima" data-precio="1400000">
+                <div class="card-img carousel" data-ciudad="Lima">
+                    <div class="carousel-track">
+                        <img src="assets/images/lima1.jpg" alt="Lima 1" onerror="this.style.display='none'">
+                        <img src="assets/images/lima2.jpg" alt="Lima 2" onerror="this.style.display='none'">
+                        <img src="assets/images/lima3.jpg" alt="Lima 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Lima</span>
+                </div>
+                <div class="card-content">
+                    <h3>Lima</h3>
+                    <p class="country">Perú</p>
+                    <div class="price">$ 1.400.000 <small>por persona</small></div>
+                    <div class="rating">4.4 <span>(310 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Río de Janeiro" data-precio="2600000">
+                <div class="card-img carousel" data-ciudad="Río de Janeiro">
+                    <div class="carousel-track">
+                        <img src="assets/images/rio1.jpg" alt="Río de Janeiro 1" onerror="this.style.display='none'">
+                        <img src="assets/images/rio2.jpg" alt="Río de Janeiro 2" onerror="this.style.display='none'">
+                        <img src="assets/images/rio3.jpg" alt="Río de Janeiro 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Río de Janeiro</span>
+                </div>
+                <div class="card-content">
+                    <h3>Río de Janeiro</h3>
+                    <p class="country">Brasil</p>
+                    <div class="price">$ 2.600.000 <small>por persona</small></div>
+                    <div class="rating">4.8 <span>(680 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Barcelona" data-precio="3100000">
+                <div class="card-img carousel" data-ciudad="Barcelona">
+                    <div class="carousel-track">
+                        <img src="assets/images/barcelona1.jpg" alt="Barcelona 1" onerror="this.style.display='none'">
+                        <img src="assets/images/barcelona2.jpg" alt="Barcelona 2" onerror="this.style.display='none'">
+                        <img src="assets/images/barcelona3.jpg" alt="Barcelona 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Barcelona</span>
+                </div>
+                <div class="card-content">
+                    <h3>Barcelona</h3>
+                    <p class="country">España</p>
+                    <div class="price">$ 3.100.000 <small>por persona</small></div>
+                    <div class="rating">4.8 <span>(560 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="París" data-precio="3300000">
+                <div class="card-img carousel" data-ciudad="París">
+                    <div class="carousel-track">
+                        <img src="assets/images/paris1.jpg" alt="París 1" onerror="this.style.display='none'">
+                        <img src="assets/images/paris2.jpg" alt="París 2" onerror="this.style.display='none'">
+                        <img src="assets/images/paris3.jpg" alt="París 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">París</span>
+                </div>
+                <div class="card-content">
+                    <h3>París</h3>
+                    <p class="country">Francia</p>
+                    <div class="price">$ 3.300.000 <small>por persona</small></div>
+                    <div class="rating">4.9 <span>(980 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Londres" data-precio="3400000">
+                <div class="card-img carousel" data-ciudad="Londres">
+                    <div class="carousel-track">
+                        <img src="assets/images/londres1.jpg" alt="Londres 1" onerror="this.style.display='none'">
+                        <img src="assets/images/londres2.jpg" alt="Londres 2" onerror="this.style.display='none'">
+                        <img src="assets/images/londres3.jpg" alt="Londres 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Londres</span>
+                </div>
+                <div class="card-content">
+                    <h3>Londres</h3>
+                    <p class="country">Reino Unido</p>
+                    <div class="price">$ 3.400.000 <small>por persona</small></div>
+                    <div class="rating">4.8 <span>(870 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Roma" data-precio="3200000">
+                <div class="card-img carousel" data-ciudad="Roma">
+                    <div class="carousel-track">
+                        <img src="assets/images/roma1.jpg" alt="Roma 1" onerror="this.style.display='none'">
+                        <img src="assets/images/roma2.jpg" alt="Roma 2" onerror="this.style.display='none'">
+                        <img src="assets/images/roma3.jpg" alt="Roma 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Roma</span>
+                </div>
+                <div class="card-content">
+                    <h3>Roma</h3>
+                    <p class="country">Italia</p>
+                    <div class="price">$ 3.200.000 <small>por persona</small></div>
+                    <div class="rating">4.9 <span>(760 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Berlín" data-precio="3150000">
+                <div class="card-img carousel" data-ciudad="Berlín">
+                    <div class="carousel-track">
+                        <img src="assets/images/berlin1.jpg" alt="Berlín 1" onerror="this.style.display='none'">
+                        <img src="assets/images/berlin2.jpg" alt="Berlín 2" onerror="this.style.display='none'">
+                        <img src="assets/images/berlin3.jpg" alt="Berlín 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Berlín</span>
+                </div>
+                <div class="card-content">
+                    <h3>Berlín</h3>
+                    <p class="country">Alemania</p>
+                    <div class="price">$ 3.150.000 <small>por persona</small></div>
+                    <div class="rating">4.6 <span>(390 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Ámsterdam" data-precio="3250000">
+                <div class="card-img carousel" data-ciudad="Ámsterdam">
+                    <div class="carousel-track">
+                        <img src="assets/images/amsterdam1.jpg" alt="Ámsterdam 1" onerror="this.style.display='none'">
+                        <img src="assets/images/amsterdam2.jpg" alt="Ámsterdam 2" onerror="this.style.display='none'">
+                        <img src="assets/images/amsterdam3.jpg" alt="Ámsterdam 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Ámsterdam</span>
+                </div>
+                <div class="card-content">
+                    <h3>Ámsterdam</h3>
+                    <p class="country">Países Bajos</p>
+                    <div class="price">$ 3.250.000 <small>por persona</small></div>
+                    <div class="rating">4.7 <span>(430 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Lisboa" data-precio="3000000">
+                <div class="card-img carousel" data-ciudad="Lisboa">
+                    <div class="carousel-track">
+                        <img src="assets/images/lisboa1.jpg" alt="Lisboa 1" onerror="this.style.display='none'">
+                        <img src="assets/images/lisboa2.jpg" alt="Lisboa 2" onerror="this.style.display='none'">
+                        <img src="assets/images/lisboa3.jpg" alt="Lisboa 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Lisboa</span>
+                </div>
+                <div class="card-content">
+                    <h3>Lisboa</h3>
+                    <p class="country">Portugal</p>
+                    <div class="price">$ 3.000.000 <small>por persona</small></div>
+                    <div class="rating">4.7 <span>(360 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Dubái" data-precio="4200000">
+                <div class="card-img carousel" data-ciudad="Dubái">
+                    <div class="carousel-track">
+                        <img src="assets/images/dubai1.jpg" alt="Dubái 1" onerror="this.style.display='none'">
+                        <img src="assets/images/dubai2.jpg" alt="Dubái 2" onerror="this.style.display='none'">
+                        <img src="assets/images/dubai3.jpg" alt="Dubái 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Dubái</span>
+                </div>
+                <div class="card-content">
+                    <h3>Dubái</h3>
+                    <p class="country">Emiratos Árabes</p>
+                    <div class="price">$ 4.200.000 <small>por persona</small></div>
+                    <div class="rating">4.8 <span>(510 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Tokio" data-precio="5500000">
+                <div class="card-img carousel" data-ciudad="Tokio">
+                    <div class="carousel-track">
+                        <img src="assets/images/tokio1.jpg" alt="Tokio 1" onerror="this.style.display='none'">
+                        <img src="assets/images/tokio2.jpg" alt="Tokio 2" onerror="this.style.display='none'">
+                        <img src="assets/images/tokio3.jpg" alt="Tokio 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Tokio</span>
+                </div>
+                <div class="card-content">
+                    <h3>Tokio</h3>
+                    <p class="country">Japón</p>
+                    <div class="price">$ 5.500.000 <small>por persona</small></div>
+                    <div class="rating">4.9 <span>(920 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Sídney" data-precio="5800000">
+                <div class="card-img carousel" data-ciudad="Sídney">
+                    <div class="carousel-track">
+                        <img src="assets/images/sidney1.jpg" alt="Sídney 1" onerror="this.style.display='none'">
+                        <img src="assets/images/sidney2.jpg" alt="Sídney 2" onerror="this.style.display='none'">
+                        <img src="assets/images/sidney3.jpg" alt="Sídney 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Sídney</span>
+                </div>
+                <div class="card-content">
+                    <h3>Sídney</h3>
+                    <p class="country">Australia</p>
+                    <div class="price">$ 5.800.000 <small>por persona</small></div>
+                    <div class="rating">4.9 <span>(640 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+            <div class="card" data-destino="Punta Cana" data-precio="2300000">
+                <div class="card-img carousel" data-ciudad="Punta Cana">
+                    <div class="carousel-track">
+                        <img src="assets/images/puntacana1.jpg" alt="Punta Cana 1" onerror="this.style.display='none'">
+                        <img src="assets/images/puntacana2.jpg" alt="Punta Cana 2" onerror="this.style.display='none'">
+                        <img src="assets/images/puntacana3.jpg" alt="Punta Cana 3" onerror="this.style.display='none'">
+                    </div>
+                    <span class="city-label">Punta Cana</span>
+                </div>
+                <div class="card-content">
+                    <h3>Punta Cana</h3>
+                    <p class="country">República Dominicana</p>
+                    <div class="price">$ 2.300.000 <small>por persona</small></div>
+                    <div class="rating">4.8 <span>(590 opiniones)</span></div>
+                    <button class="btn-card">Ver oferta</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+    MODAL DE DETALLE DE DESTINO
+    ========================================== -->
+    <div class="modal-overlay" id="modal-detalle">
+        <div class="modal-card">
+            <button class="modal-cerrar" onclick="cerrarModal()">X</button>
+            <div id="modal-contenido"></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+    PIE DE PAGINA
+    ========================================== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>SkyWing</h4>
+                <p style="max-width: 250px; line-height: 1.8;">
+                    Comparador de viajes ficticio para proyecto universitario.
+                    Todos los datos son inventados.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#" id="link-acerca-de">Acerca de</a></li>
+                    <li><a href="#">Trabaja con nosotros</a></li>
+                    <li><a href="#">Prensa</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Soporte</h4>
+                <ul>
+                    <li><a href="#">Centro de ayuda</a></li>
+                    <li><a href="#">Cancelaciones</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Terminos</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 <strong>SkyWing</strong> — Proyecto academico, todos los derechos reservados.
+        </div>
+    </footer>
+
+    <div id="historial-container" style="max-width: 1200px; margin: 20px auto; padding: 0 5%;"></div>
+
+</body>
+</html>
